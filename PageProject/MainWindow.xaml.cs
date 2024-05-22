@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using PageProject.View;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -20,5 +21,11 @@ namespace PageProject
         {
             InitializeComponent();
         }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Userview userview = new Userview();
+            userview.Show();
+        }
+
     }
 }

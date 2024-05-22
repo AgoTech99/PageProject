@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PageProject"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Button  Content="Clicca" Width="150" Height="100" Click="Button_Click" />
+    </StackPanel>
 </Window>
