@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PageProject"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Home" Height="450" Width="800"
+        Background="LightGray"
+        >
 
-    </Grid>
+    <StackPanel HorizontalAlignment="Center"  VerticalAlignment="Center" >
+        <Button FontSize="20" FontFamily="arial" FontWeight="Bold"  BorderThickness="2" Padding="5" Click="Button_Click">
+            Login
+        </Button>
+    </StackPanel>
+
 </Window>

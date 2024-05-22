@@ -20,5 +20,11 @@ namespace PageProject
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Views.UserView userView = new Views.UserView();
+            userView.Show();
+        }
     }
 }
