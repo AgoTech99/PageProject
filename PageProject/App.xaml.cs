@@ -9,6 +9,6 @@ namespace PageProject
     /// </summary>
     public partial class App : Application
     {
-    }
+        }
 
 }

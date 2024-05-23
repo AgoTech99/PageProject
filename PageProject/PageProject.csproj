@@ -7,10 +7,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
     <Platforms>AnyCPU;x64</Platforms>
+    <StartupObject>PageProject.App</StartupObject>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Folder Include="VModels\" />
-  </ItemGroup>
 
 </Project>

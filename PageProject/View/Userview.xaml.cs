@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PageProject.Models;
+using PageProject.VModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,35 @@ namespace PageProject.View
     /// </summary>
     public partial class Userview : Window
     {
-        public Userview()
+        public Userview(UserViewModel userViewModel)
         {
+            DataContext = userViewModel;
             InitializeComponent();
+            
         }
+
+
+        
+
+        private void TextBox_PreviewKeyUp(object sender, KeyEventArgs e)
+        {
+            if (sender is TextBox text)
+            {
+                if (text.Text.Length == 0)
+                {
+                    text.Background=  new SolidColorBrush(Colors.Red);
+
+                }
+                else
+                {
+                    text.Background= new SolidColorBrush(Colors.White);
+                }
+
+            }
+        }
+
+
+
+
     }
 }

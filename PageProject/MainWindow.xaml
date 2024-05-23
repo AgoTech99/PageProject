@@ -7,6 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-        <Button  Content="Clicca" Width="150" Height="100" Click="Button_Click" />
+        <Button  Content="Click" Width="100" Height="50" Click="Button_Click" BorderBrush="Blue"  Background="Aqua" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20"/>
+                </Style>
+            </Button.Resources>
+        </Button>
     </StackPanel>
 </Window>

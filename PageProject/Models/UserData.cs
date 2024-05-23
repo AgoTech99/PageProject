@@ -8,21 +8,29 @@ namespace PageProject.Models
 {
     public class UserData
     {
-
-        public string Profilo = "federico";
-
-        public string User { get; set; }
-
-        public UserData()
+        private string profile = "federico";
+        public string Profile
         {
-            GetUser();
-
+            get
+            {
+                return profile;
+            }
+            set
+            {
+                profile = value;
+            }
         }
 
-        private void GetUser()
+
+        
+
+        private string user = Environment.UserName;
+        public string User
         {
-            
+            get
+            {
+                return user;
+            }
         }
     }
-
 }

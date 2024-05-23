@@ -1,4 +1,6 @@
-﻿using PageProject.View;
+﻿using PageProject.Models;
+using PageProject.View;
+using PageProject.VModels;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,15 +19,19 @@ namespace PageProject
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
+
             InitializeComponent();
+
+            
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Userview userview = new Userview();
+            Userview userview = new Userview(new UserViewModel(new UserData()));
             userview.Show();
         }
-
+ 
     }
 }

@@ -4,18 +4,40 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PageProject.View"
+        xmlns:vm="clr-namespace:PageProject.VModels"
         mc:Ignorable="d"
+        d:DataContext ="{d:DesignInstance vm:UserViewModel}"
         Title="Utente Corrente" Height="450" Width="800">
-    <StackPanel Orientation="Vertical">
+        
+    <!--<StackPanel Orientation="Vertical">
 
-        <StackPanel Orientation="Horizontal" Margin="8"  >
-            <TextBlock Text="Nome Utente"/>
-            <TextBox Text="daddsa"/>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" Margin="8" >
-            <TextBlock Text="Profilo" Padding="0,0,6,0"/>
-            <TextBox Text="daddsa"  Padding="6,0,0,0" />
-        </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="8"  >
+                <TextBlock Text="Nome Utente"/>
+                <TextBox Text="{Binding Path=User, Mode=OneWay}" Padding="6,0,0,0" PreviewKeyUp="TextBox_PreviewKeyUp"/>
+            
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="8" >
+                <TextBlock Text="Profilo"/>
+                <TextBox Text="{Binding Path=Profilo}" Padding="0,0,6,0" IsReadOnly="True"/>
+            </StackPanel>
 
-    </StackPanel>
+        </StackPanel>-->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="User" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0"  Grid.Column="0"/>
+        <TextBox Text="{Binding Path=User, Mode=OneWay}" IsReadOnly="True" Focusable="False" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" HorizontalContentAlignment="Left"/>
+       
+        <TextBlock Text="Profile"  VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1"  Grid.Column="0"/>
+        <TextBox Text="{Binding Path=Profile}"  Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" HorizontalContentAlignment="Left" PreviewKeyUp="TextBox_PreviewKeyUp" PreviewKeyDown="TextBox_PreviewKeyUp" />
+
+    </Grid>
 </Window>
