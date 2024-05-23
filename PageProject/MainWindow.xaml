@@ -4,9 +4,46 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PageProject"
+        xmlns:vm ="clr-namespace:PageProject"
         mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance vm:MainWindow}"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
 
-    </Grid>
+    
+    <StackPanel Width="auto" Height="auto" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Button FontFamily="arial" Click="Button_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+                <Style TargetType="Button">
+                    <Setter Property="Content" Value="Login" />
+                    <Setter Property="FontSize" Value="20" />
+                    <Setter Property="FontWeight" Value="bold"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="Margin" Value="0"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border
+                                    Background="Wheat"
+                                    BorderBrush="Black"
+                                    BorderThickness="2"
+                                    Padding="10">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="FontSize" Value="22" />
+                            <Setter Property="Foreground" Value="#FFA97B25"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Resources>
+        </Button>
+    </StackPanel>
+    
 </Window>
