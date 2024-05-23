@@ -6,7 +6,16 @@
         xmlns:local="clr-namespace:PageProject"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Button  Content="Click" Width="100" Height="50"  Click="Button_Click" BorderBrush="Blue"  Background="Aqua" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20"/>
+                </Style>
+            </Button.Resources>
+            <Button.Triggers >
 
-    </Grid>
+            </Button.Triggers>
+        </Button>
+    </StackPanel>
 </Window>

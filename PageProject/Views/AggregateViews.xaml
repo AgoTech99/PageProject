@@ -1,0 +1,84 @@
+﻿<Window x:Class="PageProject.Views.AggregateViews"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PageProject.Views"
+        mc:Ignorable="d"
+        Title="AggregateViews" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="1" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="3*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Sono M1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" />
+                <ComboBox Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="3*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Sono R1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
+                <ComboBox Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+            </Grid>
+
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="1" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="3*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Sono M2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
+                <ComboBox Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="3*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Sono R2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" />
+                <ComboBox Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+            </Grid>
+
+        </Grid>
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="AGGREGATI" VerticalAlignment="Center" FontSize="21"/>
+    </Grid>
+
+
+
+</Window>

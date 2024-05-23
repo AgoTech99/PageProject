@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using PageProject.Views;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -20,5 +21,13 @@ namespace PageProject
         {
             InitializeComponent();
         }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            AggregateViews aggregateViews = new AggregateViews();
+            aggregateViews.ShowDialog();
+        }
+
+
+        
     }
 }
