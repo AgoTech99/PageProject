@@ -1,13 +1,8 @@
-﻿using System.Text;
+﻿using PageProject.Models;
+using PageProject.ViewModels;
+using PageProject.Views;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace PageProject
 {
@@ -19,12 +14,22 @@ namespace PageProject
         public MainWindow()
         {
             InitializeComponent();
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Views.UserView userView = new Views.UserView();
-            userView.Show();
+            UserModel UModel = new UserModel();
+
+            UserViewModel UViewModel = new UserViewModel(UModel);
+
+            UserView UserV = new UserView(UViewModel);
+            UserV.Owner = this;
+            UserV.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            UserV.Show();
+            UserV.Owner = null;
+            this.Close();
+
         }
     }
 }

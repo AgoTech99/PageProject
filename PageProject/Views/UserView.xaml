@@ -4,10 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PageProject.Views"
+        xmlns:vm ="clr-namespace:PageProject.ViewModels"
         mc:Ignorable="d"
-        Title="Utente Corrente" Height="450" Width="800"
+        d:DataContext="{d:DesignInstance vm:UserViewModel}"
+        Title="Current User" Height="450" Width="800"
         Background="LightGray"
         >
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" />
@@ -20,13 +23,47 @@
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.Column="0" Margin="30,30,10,30" FontSize="15" >Nome Utente</TextBlock>
+        <TextBlock Grid.Row="0" Grid.Column="0" Margin="30,30,10,30" FontSize="15" >User Name</TextBlock>
 
-        <TextBox Grid.Row="0" Grid.Column="1" Margin="10,30,20,30" Background="LightGray" ></TextBox>
+        <TextBox 
+            x:Name="UserBox" 
+            Grid.Row="0" 
+            Grid.Column="1" 
+            Margin="10,30,20,30" 
+            Background="LightGray" 
+            Text="{Binding Path=OsName, Mode=OneWay}" 
+            IsReadOnly="True" 
+            Focusable="False"
+            >
+        </TextBox>
 
-        <TextBlock Grid.Row="1" Grid.Column="0" Margin="30,20,10,30" FontSize="15" >Profilo</TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="0" Margin="30,20,10,30" FontSize="15" >Profile</TextBlock>
 
-        <TextBox Grid.Row="1" Grid.Column="1" Margin="10,20,20,30" Background="LightGray" ></TextBox>
+        <TextBox 
+            x:Name="ProfileBox" 
+            Grid.Row="1" 
+            Grid.Column="1"
+            Margin="10,20,20,30" 
+            Text="{Binding Path=UserName, UpdateSourceTrigger=PropertyChanged}" 
+            PreviewKeyDown="ProfileBox_Event" 
+            PreviewKeyUp="ProfileBox_Event" BorderBrush="#FFABADB3" >
+            <TextBox.Background>
+                <SolidColorBrush Color="LightGray"/>
+            </TextBox.Background>
+        </TextBox>
+
+        <TextBlock 
+            x:Name="ResultBox" 
+            Grid.Row="2" 
+            Grid.Column="0" 
+            Grid.ColumnSpan="3" 
+            Height="auto" 
+            Width="auto" 
+            HorizontalAlignment="Center" 
+            Text="{Binding Path=UserName, UpdateSourceTrigger=PropertyChanged}" 
+            FontWeight="Bold" 
+            FontSize="16" 
+            FontFamily="arial"/>
 
     </Grid>
 </Window>

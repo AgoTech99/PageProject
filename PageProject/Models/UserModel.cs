@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PageProject.Models
+﻿namespace PageProject.Models
 {
-    internal class UserModel
+    public class UserModel
     {
-        private string _name = "Allebo";
+        private string _userName = "Alessio";
+        public string UserName { get { return _userName; } set { _userName = value; } }
+
+        private string _osName;
+        public string OsName { get { return Environment.UserName; } set { _osName = value; } }
+
+
     }
 }
