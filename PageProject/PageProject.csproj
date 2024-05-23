@@ -9,4 +9,12 @@
     <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Views\Images\info.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Views\Images\info.png" />
+  </ItemGroup>
+
 </Project>

@@ -8,81 +8,99 @@
         Title="AggregateView" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        
         <TextBlock 
-            Grid.Row="0" 
-            Grid.Column="0"
-            Grid.ColumnSpan="2"
-            Margin="10"
-            FontFamily="Arial"
-            FontSize="30"
-            FontWeight="Bold"
+            Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+            FontFamily="Arial" FontSize="30" FontWeight="Bold"
+            Margin="25"
             HorizontalAlignment="Center">Aggregati
         </TextBlock>
 
-        <StackPanel 
-            Grid.Row="1"
-            Grid.Column="0"
-            Height="auto"
-            >
-            <TextBlock 
-                HorizontalAlignment="Center"
-                FontSize="20"
-                Margin="20"
-                >Sonde M1</TextBlock>
-            <ComboBox
-                Width="200"
-                ></ComboBox>
-            
-            
-            <TextBlock
-                HorizontalAlignment="Center"
-                FontSize="20"
-                Margin="20"
-                >Sonde R1</TextBlock>
-            <ComboBox
-                Width="200"
-                ></ComboBox>
+
+        <StackPanel Grid.Row="1" Grid.Column="0" Height="auto" VerticalAlignment="Center">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                
+                <TextBlock Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" FontSize="20" >Sonde M1</TextBlock>
+                <ComboBox  Grid.Row="1" Grid.Column="1" Width="200" Margin="0,30,0,0"></ComboBox>
+                <Image Source="Images/info.png" Width="32" Height="32" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2"/>
+            </Grid>
         </StackPanel>
 
-        
-        
-        
-        
-        
-        
-        
-        
-        <StackPanel 
-     Grid.Row="1"
-     Grid.Column="0"
-     Height="auto"
-     >
-            <TextBlock 
-         HorizontalAlignment="Center"
-         FontSize="20"
-         Margin="20"
-         >Sonde M1</TextBlock>
-            <ComboBox
-         Width="200"
-         ></ComboBox>
+
+        <StackPanel Grid.Row="2" Grid.Column="0" Height="auto" VerticalAlignment="Center">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" FontSize="20" >Sonde M1</TextBlock>
+                <ComboBox  Grid.Row="1" Grid.Column="1" Width="200" Margin="0,30,0,0"></ComboBox>
+                <Image Source="Images/info.png" Width="32" Height="32" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2"/>
+            </Grid>
+        </StackPanel>
 
 
-            <TextBlock
-         HorizontalAlignment="Center"
-         FontSize="20"
-         Margin="20"
-         >Sonde R1</TextBlock>
-            <ComboBox
-         Width="200"
-         ></ComboBox>
+
+
+        <StackPanel Grid.Row="1" Grid.Column="1" Height="auto" VerticalAlignment="Center">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" FontSize="20" >Sonde M1</TextBlock>
+                <ComboBox  Grid.Row="1" Grid.Column="1" Width="200" Margin="0,30,0,0"></ComboBox>
+                <Image Source="Images/info.png" Width="32" Height="32" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2"/>
+            </Grid>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="1" Height="auto" VerticalAlignment="Center">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" FontSize="20" >Sonde M1</TextBlock>
+                <ComboBox  Grid.Row="1" Grid.Column="1" Width="200" Margin="0,30,0,0"></ComboBox>
+                <Image Source="Images/info.png" Width="32" Height="32" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2"/>
+            </Grid>
         </StackPanel>
 
     </Grid>
