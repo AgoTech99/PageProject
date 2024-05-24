@@ -1,6 +1,4 @@
-﻿
-
-namespace PageProject.Models
+﻿namespace PageProject.Models
 {
     public class EnumModel
     {

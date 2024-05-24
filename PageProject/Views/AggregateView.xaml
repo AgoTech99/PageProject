@@ -53,11 +53,11 @@
                             </Grid.RowDefinitions>
 
                             <TextBlock Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" Text="{Binding Path=MicrowaveName}" ></TextBlock>
-                            <ComboBox Margin="0,30,0,0" Grid.Row="1" Grid.Column="1" Width="200" ItemsSource="{Binding Path=MicrowaveList, UpdateSourceTrigger=PropertyChanged}" ></ComboBox>
+                            <ComboBox Margin="0,30,0,0" Grid.Row="1" Grid.Column="1" Width="200" ItemsSource="{Binding Path=MicrowaveList, UpdateSourceTrigger=PropertyChanged}" SelectedValue="{Binding Path=SelectedEntryM}" ></ComboBox>
                             <Image Margin="20,0,0,0" Source="Images/info.png" Width="32" Height="32" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2"/>
 
                             <TextBlock Margin="0,50,0,0" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" Text="{Binding Path=ResistorName}" ></TextBlock>
-                            <ComboBox Margin="0,30,0,0" Grid.Row="3" Grid.Column="1" Width="200" ItemsSource="{Binding Path=ResistorList, UpdateSourceTrigger=PropertyChanged}" ></ComboBox>
+                            <ComboBox Margin="0,30,0,0" Grid.Row="3" Grid.Column="1" Width="200" ItemsSource="{Binding Path=ResistorList, UpdateSourceTrigger=PropertyChanged}" SelectedValue="{Binding Path=SelectedEntryR}" ></ComboBox>
                             <Image Margin="20,50,0,0" Source="Images/info.png" Width="32" Height="32" Grid.Column="2" Grid.Row="2" Grid.RowSpan="2"/>
                         </Grid>
                     </StackPanel>

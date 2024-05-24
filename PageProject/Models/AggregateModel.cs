@@ -1,13 +1,9 @@
-﻿
-
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 
 namespace PageProject.Models
 {
     public class AggregateModel
     {
-
-        
 
         private ObservableCollection<BaseModel> _modelsList;
 
