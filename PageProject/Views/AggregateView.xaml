@@ -40,7 +40,7 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" FontSize="20" Text="{Binding Path=AggregateModel.ModelsList[0].MicrowaveName}" ></TextBlock>
-                <ComboBox  Grid.Row="1" Grid.Column="1" Width="200" Margin="0,30,0,0"></ComboBox>
+                <ComboBox  Grid.Row="1" Grid.Column="1" Width="200" Margin="0,30,0,0" ItemsSource="{Binding Path=AggregateModel.ModelsList[0].MicrowaveList, UpdateSourceTrigger=PropertyChanged}" SelectedValue="{Binding Path=SelectedEntryM1}"  ></ComboBox>
                 <Image Source="Images/info.png" Width="32" Height="32" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2"/>
             </Grid>
         </StackPanel>
@@ -59,7 +59,7 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" FontSize="20" Text="{Binding Path=AggregateModel.ModelsList[0].ResistorName}" ></TextBlock>
-                <ComboBox  Grid.Row="1" Grid.Column="1" Width="200" Margin="0,30,0,0"></ComboBox>
+                <ComboBox  Grid.Row="1" Grid.Column="1" Width="200" Margin="0,30,0,0" ItemsSource="{Binding Path=AggregateModel.ModelsList[0].ResistorList, UpdateSourceTrigger=PropertyChanged}" SelectedValue="{Binding Path=SelectedEntryR1}"></ComboBox>
                 <Image Source="Images/info.png" Width="32" Height="32" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2"/>
             </Grid>
         </StackPanel>
@@ -80,7 +80,7 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" FontSize="20" Text="{Binding Path=AggregateModel.ModelsList[1].MicrowaveName}" ></TextBlock>
-                <ComboBox  Grid.Row="1" Grid.Column="1" Width="200" Margin="0,30,0,0"></ComboBox>
+                <ComboBox  Grid.Row="1" Grid.Column="1" Width="200" Margin="0,30,0,0" ItemsSource="{Binding Path=AggregateModel.ModelsList[1].MicrowaveList, UpdateSourceTrigger=PropertyChanged}" SelectedValue="{Binding Path=SelectedEntryM2}"></ComboBox>
                 <Image Source="Images/info.png" Width="32" Height="32" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2"/>
             </Grid>
         </StackPanel>
@@ -97,8 +97,8 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" FontSize="20" Text="{Binding Path=AggregateModel.ModelsList[0].ResistorName}" ></TextBlock>
-                <ComboBox  Grid.Row="1" Grid.Column="1" Width="200" Margin="0,30,0,0"></ComboBox>
+                <TextBlock Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" FontSize="20" Text="{Binding Path=AggregateModel.ModelsList[1].ResistorName}" ></TextBlock>
+                <ComboBox  Grid.Row="1" Grid.Column="1" Width="200" Margin="0,30,0,0" ItemsSource="{Binding Path=AggregateModel.ModelsList[1].ResistorList, UpdateSourceTrigger=PropertyChanged}" SelectedValue="{Binding Path=SelectedEntryR2}"></ComboBox>
                 <Image Source="Images/info.png" Width="32" Height="32" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2"/>
             </Grid>
         </StackPanel>
