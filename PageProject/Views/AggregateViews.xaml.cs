@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PageProject.VModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,41 @@ namespace PageProject.Views
     /// </summary>
     public partial class AggregateViews : Window
     {
-        public AggregateViews()
+        public AggregateViews(AggregateVModel aggregateVModel)
         {
+            DataContext = aggregateVModel;
             InitializeComponent();
+        }
+
+        private void ComboBox_SelectionChanged_M(object sender, SelectionChangedEventArgs e)
+        {
+            if (sender is ComboBox comboBox)
+            {
+                if (comboBox.DataContext is AggregateVModel aggregateVModel)
+                {
+                    if (aggregateVModel.check("M"))
+                    {
+                        comboBox.SelectedValue = 0;
+                    }
+                }   
+            }
+        }
+
+        private void ComboBox_SelectionChanged_R(object sender, SelectionChangedEventArgs e)
+        {
+
+            if (sender is ComboBox comboBox)
+            {
+               
+                if (comboBox.DataContext is AggregateVModel aggregateVModel)
+                {
+                    System.Diagnostics.Debug.WriteLine(aggregateVModel.check("M"));
+                    if (aggregateVModel.check("R"))
+                    {
+                        comboBox.SelectedValue = 0;
+                    }
+                }
+            }
         }
     }
 }

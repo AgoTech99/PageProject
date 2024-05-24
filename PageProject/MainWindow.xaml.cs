@@ -1,4 +1,6 @@
-﻿using PageProject.Views;
+﻿using PageProject.Model;
+using PageProject.Views;
+using PageProject.VModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,11 +21,12 @@ namespace PageProject
     {
         public MainWindow()
         {
+
             InitializeComponent();
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AggregateViews aggregateViews = new AggregateViews();
+            AggregateViews aggregateViews = new AggregateViews(new AggregateVModel());
             aggregateViews.ShowDialog();
         }
 
