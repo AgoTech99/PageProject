@@ -1,5 +1,7 @@
 ﻿
 
+using System.Collections.ObjectModel;
+
 namespace PageProject.Models
 {
     public class AggregateModel
@@ -7,9 +9,9 @@ namespace PageProject.Models
 
         
 
-        private List<BaseModel> _modelsList;
+        private ObservableCollection<BaseModel> _modelsList;
 
-        public List<BaseModel> ModelsList { get { return _modelsList; } }
+        public ObservableCollection<BaseModel> ModelsList { get { return _modelsList; } }
 
         public AggregateModel()
         {

@@ -7,7 +7,7 @@
         xmlns:vm ="clr-namespace:PageProject"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance vm:MainWindow}"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Background="#FFF7E695">
 
     
     <StackPanel Width="auto" Height="auto" VerticalAlignment="Center" HorizontalAlignment="Center">
@@ -15,30 +15,31 @@
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="15"/>
+                    <Setter Property="BorderThickness" Value="1"/>
                 </Style>
                 <Style TargetType="Button">
                     <Setter Property="Content" Value="Login" />
-                    <Setter Property="FontSize" Value="20" />
+                    <Setter Property="FontSize" Value="30" />
                     <Setter Property="FontWeight" Value="bold"/>
                     <Setter Property="Foreground" Value="Black"/>
-                    <Setter Property="Margin" Value="0"/>
                     <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="Button">
-                                <Border
-                                    Background="Wheat"
-                                    BorderBrush="Black"
-                                    BorderThickness="2"
-                                    Padding="10">
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Setter.Value>
+                    
+                        
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="Wheat" BorderBrush="Black" BorderThickness="2" Padding="10">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
                     </Setter>
+                    
                     <Style.Triggers>
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="FontSize" Value="22" />
+                        <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Foreground" Value="#FFA97B25"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="FontSize" Value="26" />
                         </Trigger>
                     </Style.Triggers>
                 </Style>

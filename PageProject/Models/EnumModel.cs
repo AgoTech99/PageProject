@@ -6,7 +6,7 @@ namespace PageProject.Models
     {
         public enum AggregateId
         {
-            Aggregate1 = 1, Aggregate2 = 2
+            Aggregate1 = 1, Aggregate2, Aggregate3 
         }
 
     }
