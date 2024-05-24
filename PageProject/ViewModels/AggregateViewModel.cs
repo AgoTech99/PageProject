@@ -1,15 +1,24 @@
 ﻿using PageProject.Models;
+using System.ComponentModel;
 
 namespace PageProject.ViewModels
 {
-    public class AggregateViewModel
+    public class AggregateViewModel : INotifyPropertyChanged
     {
-        private AggregateModel _aggregateModel { get; set; }
+
+        public string prova = "titoloprova";
+
+        public AggregateModel AggregateModel { get; set; }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
 
         public AggregateViewModel(AggregateModel AM)
         {
-            _aggregateModel = AM;
+            AggregateModel = AM;
         }
+
+        
 
 
     }

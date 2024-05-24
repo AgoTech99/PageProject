@@ -17,11 +17,11 @@ namespace PageProject
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AggregateModel AM = new AggregateModel();
+            AggregateModel AM = new();
 
-            AggregateViewModel AVM = new AggregateViewModel(AM);
+            AggregateViewModel AVM = new(AM);
             
-            AggregateView AV = new AggregateView(AVM);
+            AggregateView AV = new(AVM);
             AV.ShowDialog();
 
         }
