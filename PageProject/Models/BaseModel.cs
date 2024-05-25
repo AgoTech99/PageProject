@@ -8,10 +8,8 @@ namespace PageProject.Models
         private string _mName = "Microwave-";
         private string _rName = "Resistor-";
 
-        private readonly List<int> _mList = new(Enumerable.Range(0, 9).ToList());
-        private readonly List<int> _rList = new(Enumerable.Range(0, 9).ToList());
-
-        public event PropertyChangedEventHandler PropertyChanged;
+        private readonly List<int> _mList = new(Enumerable.Range(0, 10).ToList());
+        private readonly List<int> _rList = new(Enumerable.Range(0, 10).ToList());
 
         public string MicrowaveName { get => _mName; set => _mName = value; }
         public string ResistorName { get => _rName; set => _rName = value; }
@@ -20,11 +18,62 @@ namespace PageProject.Models
         public List<int> ResistorList { get { return _rList; } }
 
 
+        private int _mN;
+        private int _rN;
+
+        public int MSelection
+        {
+            get => _mN;
+            set
+            {
+                if (_mN != value)
+                {
+                    _mN = value;
+                    OnPropertyChanged(nameof(MSelection));
+
+                    if (_rN != 0)
+                    {
+                        _rN = 0;
+                        OnPropertyChanged(nameof(RSelection));
+                    }
+                }
+            }
+        }
+
+        public int RSelection
+        {
+            get => _rN;
+            set
+            {
+                if (_rN != value)
+                {
+                    _rN = value;
+                    OnPropertyChanged(nameof(RSelection));
+
+                    if (_mN != 0)
+                    {
+                        _mN = 0;
+                        OnPropertyChanged(nameof(MSelection));
+                    }
+                }
+            }
+        }
+
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+
         public BaseModel(int Number) 
         {
             _mName += Number;
             _rName += Number;
 
         }
+
+
+        public event PropertyChangedEventHandler? PropertyChanged;
     }
 }

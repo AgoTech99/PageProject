@@ -1,20 +1,27 @@
 ﻿using PageProject.Models;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 
 namespace PageProject.ViewModels
 {
     public class AggregateViewModel : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        private AggregateModel _aggregateModel;
-
-        public AggregateModel AggregateModel { get => _aggregateModel; set => _aggregateModel = value; }
+        private AggregateModel _aggregateModel { get; set; }
 
         public AggregateViewModel(AggregateModel AM)
         {
             _aggregateModel = AM;
         }
 
+
+
+        public ObservableCollection<BaseModel> ModelsList 
+        { 
+            get { return _aggregateModel.ModelsList; }
+        }
+
+
+
+        public event PropertyChangedEventHandler? PropertyChanged;
     }
 }
