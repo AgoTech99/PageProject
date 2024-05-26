@@ -14,8 +14,7 @@ namespace PageProject.VModel
     {
         private Identificatore identificatore;
         private AggregateModel aggregateModel;
-        private bool check_M = false;
-        private bool check_R = false;
+        
         public AggregateVModel()
         {                                
             Model= new ObservableCollection<AggregateModel>();
@@ -30,23 +29,31 @@ namespace PageProject.VModel
             get { return model;}
             set { model = value;}
         }
-        public bool check(string lettera)
+        public bool check(string lettera, AggregateModel aggregateModel)
         {
             if (lettera== "M")
             {
-                if (check_R)
+                //System.Diagnostics.Debug.WriteLine(aggregateModel.Check_M);
+                //System.Diagnostics.Debug.WriteLine(aggregateModel.Check_R);
+                aggregateModel.Check_M=true;
+                if (aggregateModel.Check_R)
                 {
-                    check_M = false;
+                    aggregateModel.Check_R = false;
+                    System.Diagnostics.Debug.WriteLine("R");
                     return true;
                 }
                 return false;
             }
             else
             {
-                check_R = true; 
-                if (check_M)
+               // System.Diagnostics.Debug.WriteLine(aggregateModel.Check_M);
+                //System.Diagnostics.Debug.WriteLine(aggregateModel.Check_R);
+
+                aggregateModel.Check_R = true; 
+                if (aggregateModel.Check_M)
                 {
-                    check_M = false;
+                    aggregateModel.Check_M = false;
+                    System.Diagnostics.Debug.WriteLine("M");
                     return true;
                 }
                 return false;

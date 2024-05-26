@@ -1,4 +1,5 @@
-﻿using PageProject.VModel;
+﻿using PageProject.Model;
+using PageProject.VModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,33 +29,40 @@ namespace PageProject.Views
 
         private void ComboBox_SelectionChanged_M(object sender, SelectionChangedEventArgs e)
         {
+            //System.Diagnostics.Debug.WriteLine("M");
             if (sender is ComboBox comboBox)
             {
-                if (comboBox.DataContext is AggregateVModel aggregateVModel)
+                if (DataContext is AggregateVModel aggregateVModel)
                 {
-                    if (aggregateVModel.check("M"))
-                    {
-                        comboBox.SelectedValue = 0;
-                    }
+                    if (comboBox.DataContext is AggregateModel aggregateModel)
+
+                        if (aggregateVModel.check("M", aggregateModel))
+                        {
+                            
+                            comboBox.SelectedValue = 0;
+                        }
                 }   
             }
         }
 
         private void ComboBox_SelectionChanged_R(object sender, SelectionChangedEventArgs e)
         {
-
+            //System.Diagnostics.Debug.WriteLine("R");
             if (sender is ComboBox comboBox)
             {
+
                
-                if (comboBox.DataContext is AggregateVModel aggregateVModel)
+                if (DataContext is AggregateVModel aggregateVModel)
                 {
-                    System.Diagnostics.Debug.WriteLine(aggregateVModel.check("M"));
-                    if (aggregateVModel.check("R"))
-                    {
+                    if (comboBox.DataContext is AggregateModel aggregateModel)
+                        //System.Diagnostics.Debug.WriteLine(aggregateVModel.check("M"));
+                        if (aggregateVModel.check("R", aggregateModel))
+                        {
                         comboBox.SelectedValue = 0;
                     }
+                }
                 }
             }
         }
     }
-}
+

@@ -38,10 +38,10 @@
                                 <RowDefinition />
                                 <RowDefinition />
                             </Grid.RowDefinitions>
-                            <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Path=Assegnazione}" Width="200" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Margin="10" Focusable="False" />
-                            <ComboBox Grid.Column="1" Grid.Row="1" ItemsSource="{Binding Path=Microwave, Mode=OneWay}" Width="200" Margin="10" SelectionChanged="ComboBox_SelectionChanged_M"/>
-                            <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding Path=Assegnazione}" Width="200" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Margin="10" Focusable="False"/>
-                            <ComboBox Grid.Column="1" Grid.Row="3" ItemsSource="{Binding Path=Resistance, Mode=OneWay}" Width="200" Margin="10" SelectionChanged="ComboBox_SelectionChanged_R"/>
+                            <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Path=M}" Width="200" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Margin="10" Focusable="False" />
+                            <ComboBox x:Name="ComboBoxM" Grid.Column="1" Grid.Row="1" ItemsSource="{Binding Path=Microwave, Mode=OneWay}" Width="200" Margin="10" SelectionChanged="ComboBox_SelectionChanged_M"/>
+                            <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding Path=R}" Width="200" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="20" Margin="10" Focusable="False"/>
+                            <ComboBox x:Name="ComboBoxR" Grid.Column="1" Grid.Row="3" ItemsSource="{Binding Path=Resistance, Mode=OneWay}" Width="200" Margin="10" SelectionChanged="ComboBox_SelectionChanged_R"/>
                         </Grid>
                     </StackPanel>
                 </DataTemplate>
