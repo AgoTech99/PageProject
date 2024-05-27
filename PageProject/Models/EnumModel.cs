@@ -6,6 +6,5 @@
         {
             Aggregate1 = 1, Aggregate2, Aggregate3 
         }
-
     }
 }

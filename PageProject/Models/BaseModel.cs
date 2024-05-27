@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel;
+using System.Windows;
+using System.Windows.Controls;
 
 
 namespace PageProject.Models
@@ -50,6 +52,7 @@ namespace PageProject.Models
                     _rN = value;
                     OnPropertyChanged(nameof(RSelection));
 
+
                     if (_mN != 0)
                     {
                         _mN = 0;
@@ -57,6 +60,20 @@ namespace PageProject.Models
                     }
                 }
             }
+        }
+
+
+        private Visibility img1 = Visibility.Hidden;
+        private Visibility img2 = Visibility.Hidden;
+        public Visibility Img1
+        {
+            get { return img1; }
+            set { img1 = value; OnPropertyChanged(nameof(Img1)); }
+        }        
+        public Visibility Img2
+        {
+            get { return img2; }
+            set { img2 = value; OnPropertyChanged(nameof(Img2)); }
         }
 
 
@@ -70,9 +87,7 @@ namespace PageProject.Models
         {
             _mName += Number;
             _rName += Number;
-
         }
-
 
         public event PropertyChangedEventHandler? PropertyChanged;
     }
