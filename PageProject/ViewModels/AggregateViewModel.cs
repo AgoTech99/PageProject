@@ -34,18 +34,21 @@ namespace PageProject.ViewModels
             {
                 MSelected = true;
             }
-            else if (ModelsList[0].RSelection != 0) 
+            if (ModelsList[0].RSelection != 0)
             {
                 RSelected = true;
             }
 
-            if (ModelsList[1].MSelection!=0 && RSelected)
+            for (int i = 1; i < ModelsList.Count; i++) 
             {
-                ModelsList[1].Img1 = Visibility.Visible;
-            }
-            if (ModelsList[1].RSelection!=0 && MSelected)
-            {
-                ModelsList[1].Img2 = Visibility.Visible;
+                if (ModelsList[i].MSelection != 0 && RSelected)
+                {
+                    ModelsList[i].Img1 = Visibility.Visible;
+                }
+                if (ModelsList[i].RSelection != 0 && MSelected)
+                {
+                    ModelsList[i].Img2 = Visibility.Visible;
+                }
             }
         }
         
