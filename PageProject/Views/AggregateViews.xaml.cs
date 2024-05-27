@@ -21,48 +21,32 @@ namespace PageProject.Views
     /// </summary>
     public partial class AggregateViews : Window
     {
+        public AggregateVModel VModel;
         public AggregateViews(AggregateVModel aggregateVModel)
         {
+            VModel = aggregateVModel;
             DataContext = aggregateVModel;
             InitializeComponent();
+           
         }
 
-        private void ComboBox_SelectionChanged_M(object sender, SelectionChangedEventArgs e)
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //System.Diagnostics.Debug.WriteLine("M");
             if (sender is ComboBox comboBox)
             {
-                if (DataContext is AggregateVModel aggregateVModel)
+                //if (DataContext is AggregateVModel aggregateVModel)
+                
+                if (comboBox.DataContext is AggregateModel aggregateModel)
                 {
-                    if (comboBox.DataContext is AggregateModel aggregateModel)
-
-                        if (aggregateVModel.check("M", aggregateModel))
-                        {
-                            
-                            comboBox.SelectedValue = 0;
-                        }
-                }   
-            }
-        }
-
-        private void ComboBox_SelectionChanged_R(object sender, SelectionChangedEventArgs e)
-        {
-            //System.Diagnostics.Debug.WriteLine("R");
-            if (sender is ComboBox comboBox)
-            {
-
-               
-                if (DataContext is AggregateVModel aggregateVModel)
-                {
-                    if (comboBox.DataContext is AggregateModel aggregateModel)
-                        //System.Diagnostics.Debug.WriteLine(aggregateVModel.check("M"));
-                        if (aggregateVModel.check("R", aggregateModel))
-                        {
-                        comboBox.SelectedValue = 0;
-                    }
+                    VModel.check(aggregateModel); 
                 }
-                }
+
+                        
+                
             }
-        }
+
+        }   
     }
+}
 

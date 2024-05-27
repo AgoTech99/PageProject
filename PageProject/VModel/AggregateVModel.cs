@@ -2,18 +2,21 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using static PageProject.Model.AggregateEnum;
 
 namespace PageProject.VModel
 {
-    public class AggregateVModel
+
+    
+    public class AggregateVModel 
     {
         private Identificatore identificatore;
-        private AggregateModel aggregateModel;
         
         public AggregateVModel()
         {                                
@@ -24,40 +27,37 @@ namespace PageProject.VModel
         }
         private ObservableCollection<AggregateModel> model;
 
+        public event PropertyChangedEventHandler? PropertyChanged;
+
         public ObservableCollection<AggregateModel> Model
         {
             get { return model;}
             set { model = value;}
         }
-        public bool check(string lettera, AggregateModel aggregateModel)
-        {
-            if (lettera== "M")
-            {
-                //System.Diagnostics.Debug.WriteLine(aggregateModel.Check_M);
-                //System.Diagnostics.Debug.WriteLine(aggregateModel.Check_R);
-                aggregateModel.Check_M=true;
-                if (aggregateModel.Check_R)
-                {
-                    aggregateModel.Check_R = false;
-                    System.Diagnostics.Debug.WriteLine("R");
-                    return true;
-                }
-                return false;
-            }
-            else
-            {
-               // System.Diagnostics.Debug.WriteLine(aggregateModel.Check_M);
-                //System.Diagnostics.Debug.WriteLine(aggregateModel.Check_R);
 
-                aggregateModel.Check_R = true; 
-                if (aggregateModel.Check_M)
-                {
-                    aggregateModel.Check_M = false;
-                    System.Diagnostics.Debug.WriteLine("M");
-                    return true;
-                }
-                return false;
-                
+
+    
+
+
+        public void check(AggregateModel aggregateModel)
+        {
+            
+       
+           if (Model[0].Value_M != 0 && Model[1].Value_R != 0)
+            {                
+                Model[1].Image_R=Visibility.Visible;                
+            }
+           else if (Model[0].Value_R!=0 && Model[1].Value_M!=0)
+            {
+                Model[1].Image_M = Visibility.Visible;
+            }
+           if(Model[0].Value_M == 0 || Model[1].Value_R == 0)
+            {
+                Model[1].Image_R = Visibility.Hidden;
+            }
+            if (Model[0].Value_R == 0 || Model[1].Value_M == 0)
+            {
+                Model[1].Image_M = Visibility.Hidden;
             }
         }
 
