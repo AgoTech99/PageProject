@@ -20,11 +20,13 @@ namespace PageProject
             AggregateModel AM = new();
 
             AggregateViewModel AVM = new(AM);
-            
-            AggregateView AV = new(AVM);
+
+            AggregateView AV = new(AVM)
+            {
+                Owner = this
+            };   
+            this.Hide();
             AV.ShowDialog();
-
         }
-
     }
 }
