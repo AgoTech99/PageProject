@@ -40,7 +40,7 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Margin="50,10,50,50">
+                    <StackPanel Margin="50,10,0,40">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
@@ -60,7 +60,7 @@
 
                             <TextBlock Margin="0,50,0,0" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" Text="{Binding Path=ResistorName}" ></TextBlock>
                             <ComboBox Margin="0,30,0,0" Grid.Row="3" Grid.Column="1" Width="200" ItemsSource="{Binding Path=ResistorList, UpdateSourceTrigger=PropertyChanged}" SelectedValue="{Binding Path=RSelection}" SelectionChanged="ComboBox_SelectionChanged"></ComboBox>
-                            <Image Visibility="{Binding Path=Img2}" Margin="20,50,0,0" Source="Images/info.png" Width="32" Height="32" Grid.Column="2" Grid.Row="2" Grid.RowSpan="2" ToolTip="Ciao" />
+                            <Image Visibility="{Binding Path=Img2}" Margin="20,50,0,0" Source="Images/info.png" Width="32" Height="32" Grid.Column="2" Grid.Row="2" Grid.RowSpan="2" />
                         </Grid>
                     </StackPanel>
                 </DataTemplate>
