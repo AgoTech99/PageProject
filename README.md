@@ -66,11 +66,11 @@ Nel caso in cui si torni a rispettare la limitazione diagonale, deve essere disa
 | **Resistor-1** | **Resistor-2** |
 
 
-In questo esempio Combo1 e Combo2 sono disposte in orizzontale, quindi non si influenzano reciprocamente e possono quindi essere entrambe attive, entrambe non attive oppure una attiva e l'altra non attiva.
+In questo esempio **Microwave-1** e **Microwave-2** sono disposte in orizzontale, quindi non si influenzano reciprocamente e possono quindi essere entrambe attive, entrambe non attive oppure una attiva e l'altra non attiva.
 
-Combo1 e Combo3 sono disposte in verticale, quindi se Combo1 è attiva e seleziono un numero diverso da 0 in Combo3, Combo1 tornerà a 0 e viceversa.
+**Microwave-1** e **Resistor-1** sono disposte in verticale, quindi se **Microwave-1** è attiva e seleziono un numero diverso da 0 in **Resistor-1**, **Microwave-1** tornerà a 0 e viceversa.
 
-Se Combo 1 è attiva e attivo Combo4, o il contrario, non ci saranno cambiamenti di selezione, ma apparirà sulla colonna destra (Combo4) un errore. Ugualmente per Combo2 e Combo3.
+Se **Microwave-1** è attiva e attivo **Resistor-2**, o il contrario, non ci saranno cambiamenti di selezione, ma apparirà sulla colonna destra (**Resistor-2**) un errore. Ugualmente per **Microwave-2** e **Resistor-1**.
 
 ### Risultati:
 Abbiamo ampliato la comprensione del concetto di **_Binding_**, ampliato le conoscenze in campo grafico (**_XAML_**) e l'utilizzo di **_ItemControl_** e **_DataTemplate_** per replicare i componenti grafici senza la **_riscrittura_** del codice.
