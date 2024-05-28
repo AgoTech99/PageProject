@@ -10,7 +10,19 @@ namespace PageProject.Model
      
     public class SondaResistiva
     {        
-        
-        public Dictionary<int,Tipo> Dict = new Dictionary<int,Tipo>();
+        public Tipo Tipologia { get; set; }
+
+        private List<int>sonde = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        public List<int> Sonde 
+        {
+            get 
+            {  
+                return sonde; 
+            } 
+            set 
+            { 
+                sonde = value; 
+            }
+        }
     }
 }

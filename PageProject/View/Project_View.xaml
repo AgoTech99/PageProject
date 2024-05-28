@@ -26,7 +26,8 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <StackPanel >
-                            <Image Source="C:\stage-Federico\PageProject\PageProject\Images\router.png" Width="60" Height="55"   />
+                                <TextBlock Text="{Binding Path=Name}"/>
+                                <Image Source="C:\Users\fedem\source\repos\VisualStudio\PageProject\PageProject\Images\router.png" Width="60" Height="55"   />
                         </StackPanel>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
@@ -53,7 +54,7 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <ComboBox HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="5,20"/>
-                        <ComboBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="5,20" ItemsSource="{Binding Path=SondaResistiva}"/>
+                        <ComboBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="5,20" ItemsSource="{Binding Path=Sonde}" SelectionChanged="ComboBox_SelectionChanged"/>
                     </Grid>
                 </Grid>
             </Border>
@@ -101,7 +102,7 @@
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel >
-                                        <Image Source="C:\stage-Federico\PageProject\PageProject\Images\scale.png" Width="60" Height="55"   />
+                                        <Image Source="C:\Users\fedem\source\repos\VisualStudio\PageProject\PageProject\Images\scale.png" Width="60" Height="55"   />
                                     </StackPanel>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>

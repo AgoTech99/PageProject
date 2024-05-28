@@ -1,4 +1,5 @@
 ﻿using PageProject.VModel;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -42,6 +43,15 @@ namespace PageProject.View
             }
             if (sender is TextBox textBox)
                 VModel.Check_TextBox(textBox.Text);
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (sender is ComboBox comboBox)
+            {
+                VModel.check_router(Convert.ToInt32( comboBox.SelectedValue));
+                
+            }
         }
     }
 }

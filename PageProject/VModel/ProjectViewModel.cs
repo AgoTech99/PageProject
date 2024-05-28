@@ -43,6 +43,19 @@ namespace PageProject.VModel
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
+        private List<int> sonde;
+        public List<int> Sonde 
+        {
+            get
+            {
+                return sonde;
+            }
+            set 
+            { 
+                sonde = value; 
+            }
+        }
+
         private ObservableCollection<Bilancia> scales;
         public ObservableCollection<Bilancia> Scales 
         { 
@@ -66,7 +79,12 @@ namespace PageProject.VModel
             Scales= new ObservableCollection<Bilancia>();
             SondaaMicroonde= new SondaaMicroonde();
             SondaResistiva= new SondaResistiva();
+            sonde= SondaResistiva.Sonde;
         }
+
+
+        private enum tipologia;
+        public enum Tipologia;
         public void Change_scale(string sign)
         {
             if (sign == "-")
@@ -85,8 +103,10 @@ namespace PageProject.VModel
                 scales.Add(new Bilancia($"Bilancia{scales.Count() + 1}"));
                 count_scale += 1;
                 }
+                check_router(1);
             }
             OnPropertyChanged(nameof(count_scale));
+            
         }
 
 
@@ -113,10 +133,47 @@ namespace PageProject.VModel
         {
             char Char = text[text.Length - 1];
             if (!list.Contains(Char))
-                 right_string=text.Substring(0, text.Length - 1);
-            else right_string = text;
+                right_string = text.Substring(0, text.Length - 1);
+            else
+            {
+                right_string = text;
+            }
             OnPropertyChanged(nameof(Right_string));
 
+        }
+
+        public void check_router(int Device)
+        {
+            if (routers.Count == 0 && Device<=8)
+            {
+                routers.Add(new Router($"Router{routers.Count + 1}"));
+                routers[routers.Count - 1].Active_Port += Device;
+            }
+            else if (routers[routers.Count - 1].Active_Port +Device == 8)
+            {
+                routers[routers.Count - 1].Active_Port += Device;
+                routers.Add(new Router($"Router{routers.Count + 1}"));
+            }
+            else if (routers[routers.Count - 1].Active_Port + Device <= 8)
+            {
+                routers[routers.Count - 1].Active_Port += Device;
+            }
+            else
+            {
+                for (int i = Device; i < Device; i++)
+                {
+                    if (routers.Count < 6 && routers[routers.Count - 1].Active_Port < 7)
+                    {
+                        if (routers[routers.Count - 1].Active_Port == 8)
+                        {
+                            routers.Add(new Router($"Router{routers.Count + 1}"));
+                            routers[routers.Count - 1].Active_Port += 1;
+                        }
+                        else routers[routers.Count - 1].Active_Port += 1;
+                    }
+
+                }
+            }
         }
         
     }
