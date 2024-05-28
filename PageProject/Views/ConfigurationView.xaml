@@ -1,0 +1,126 @@
+﻿<Window x:Class="PageProject.Views.ConfigurationView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PageProject.Views"
+        xmlns:vm ="clr-namespace:PageProject.ViewModels"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance vm:ConfigurationViewModel}"
+        Title="ConfigurationView" 
+        Width="1920"
+        Height="1080"
+        >
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="0.5*" />
+            <RowDefinition/>
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <Border Grid.ColumnSpan="3" BorderThickness="1" BorderBrush="Black" >
+            <TextBlock Text="Configuration Tool" HorizontalAlignment="Center" Margin="15" FontWeight="Heavy" FontSize="50"/>
+        </Border>
+
+        <Border Grid.Row="1" Grid.ColumnSpan="3" BorderBrush="Black" BorderThickness="1">
+            <StackPanel>
+                <TextBlock Margin="20" Text="MultiSerials" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center"/>
+
+                <ItemsControl ItemsSource="{Binding Path=MultiserialModelsList}" >
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="103,0,0,0" ToolTip="{Binding Path=PortName}">
+                                <TextBlock FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Center" Text="{Binding Path=PortName}" />
+                                <TextBlock FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Center" Text="{Binding Path=ActiveNumberDescription}"/>
+                                <Border Height="80" Width="260" BorderBrush="Black" BorderThickness="3" >
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" >
+                                        <Rectangle Fill="Black" Height="30" Width="10" Margin="17,0,0,0"  />
+                                        <Rectangle Fill="Black" Height="30" Width="10" Margin="20,0,0,0" />
+                                        <Rectangle Fill="Black" Height="30" Width="10" Margin="20,0,0,0" />
+                                        <Rectangle Fill="Black" Height="30" Width="10" Margin="20,0,0,0" />
+                                        <Rectangle Fill="Black" Height="30" Width="10" Margin="20,0,0,0" />
+                                        <Rectangle Fill="Black" Height="30" Width="10" Margin="20,0,0,0" />
+                                        <Rectangle Fill="Black" Height="30" Width="10" Margin="20,0,0,0" />
+                                        <Rectangle Fill="Black" Height="30" Width="10" Margin="20,0,0,0" />
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Row="2" BorderBrush="Black" BorderThickness="1" >
+            <StackPanel>
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <TextBlock Margin="20" Text="Scales" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center" />
+                    <Button Content="-" Padding="0,-13,0,0" FontWeight="Heavy" FontSize="40" Margin="40,0,0,0" MinHeight="70" MinWidth="70" MaxHeight="70" MaxWidth="70" Click="Button_Plus_Click"/>
+                    <Button Content="+" Padding="0,-8,0,0" FontWeight="Heavy" FontSize="40" Margin="20,0,0,0" MinHeight="70" MinWidth="70" MaxHeight="70" MaxWidth="70" Click="Button_Minus_Click"/>
+                </StackPanel>
+
+                <ItemsControl ItemsSource="{Binding Path=ScaleModelsList}" >
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border CornerRadius="20" Margin="20" BorderThickness="2" Background="LightGray" BorderBrush="Black" Padding="20,15,20,15" Width="199">
+                                <TextBlock FontSize="30" FontWeight="Bold" HorizontalAlignment="Center" Text="{Binding Path=Name}"></TextBlock>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Row="2" Grid.Column="1" BorderBrush="Black" BorderThickness="1">
+            <StackPanel>
+                <TextBlock Margin="20" Text="Resistive Probes" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center" />
+                <StackPanel Orientation="Horizontal" Margin="0,50,0,0" HorizontalAlignment="center">
+                    <StackPanel Margin="20,0,20,0">
+                        <TextBlock HorizontalAlignment="center"  Text="Number" FontSize="30" FontWeight="SemiBold" />
+                        <ComboBox FontSize="20" VerticalAlignment="Center" MinHeight="30" MaxHeight="30" MinWidth="100" MaxWidth="100" Margin="10" ItemsSource="{Binding Path=ResistiveModel.NumberOptions}" SelectedValue="{Binding Path=ComboSelectedNumber}" />
+                    </StackPanel>
+                    <StackPanel Margin="20,0,20,0" Visibility="{Binding Path=PanelVisibility}">
+                        <TextBlock HorizontalAlignment="center"  Text="Type" FontSize="30" FontWeight="SemiBold" />
+                        <ComboBox FontSize="20" MinHeight="30" MaxHeight="30" MinWidth="100" MaxWidth="100" Margin="10" ItemsSource="{Binding Path=ResistiveModel.TypeOptions}"  />
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Row="2" Grid.Column="2" BorderBrush="Black" BorderThickness="1">
+            <StackPanel>
+                <TextBlock Margin="20" Text="Microwave Probes" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center" />
+                <StackPanel HorizontalAlignment="Center">
+                    <TextBlock HorizontalAlignment="center" Margin="0,50,0,0" Text="Number" FontSize="30" FontWeight="SemiBold" />
+                    <TextBox Background="Transparent" Margin="10" MinHeight="30" MinWidth="100" MaxWidth="100" MaxHeight="30" FontSize="20" ></TextBox>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Row="3" Grid.ColumnSpan="3" BorderBrush="Black" BorderThickness="1">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
+                <TextBlock FontSize="25" Margin="0,15,100,15" VerticalAlignment="Center" FontWeight="SemiBold" Text="{Binding Path=Status}" />
+                <Button FontSize="25" Margin="0,15,100,15" Padding="10" FontWeight="bold" >Save</Button>
+            </StackPanel>
+        </Border>
+        
+        
+    </Grid>
+</Window>
