@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using PageProject.View;
+using PageProject.VModel;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,6 +21,12 @@ namespace PageProject
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Project_View view = new Project_View(new ProjectViewModel());
+            view.ShowDialog();
         }
     }
 }
