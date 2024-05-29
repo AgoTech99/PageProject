@@ -67,8 +67,64 @@
             <StackPanel>
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                     <TextBlock Margin="20" Text="Scales" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center" />
-                    <Button Content="-" Padding="0,-13,0,0" FontWeight="Heavy" FontSize="40" Margin="40,0,0,0" MinHeight="70" MinWidth="70" MaxHeight="70" MaxWidth="70" Click="Button_Plus_Click"/>
-                    <Button Content="+" Padding="0,-8,0,0" FontWeight="Heavy" FontSize="40" Margin="20,0,0,0" MinHeight="70" MinWidth="70" MaxHeight="70" MaxWidth="70" Click="Button_Minus_Click"/>
+                    
+                    <Button Click="Button_Minus_Click" Margin="40,0,0,0" MinHeight="50" MinWidth="50" MaxHeight="50" MaxWidth="50" >
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="50"/>
+                            </Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Content" Value="-" />
+                                <Setter Property="FontSize" Value="25" />
+                                <Setter Property="FontWeight" Value="Heavy"/>
+                                <Setter Property="Foreground" Value="Black"/>
+
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Background="LightGray" BorderBrush="Black" BorderThickness="2">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-8,0,0" />
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Foreground" Value="Gray"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    
+                    <Button Click="Button_Plus_Click" Margin="20,0,0,0" MinHeight="50" MinWidth="50" MaxHeight="50" MaxWidth="50" >
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="50"/>
+                            </Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Content" Value="+" />
+                                <Setter Property="FontSize" Value="25" />
+                                <Setter Property="FontWeight" Value="Heavy"/>
+                                <Setter Property="Foreground" Value="Black"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Background="LightGray" BorderBrush="Black" BorderThickness="2" >
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-7,0,0" />
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Foreground" Value="Gray"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    
                 </StackPanel>
 
                 <ItemsControl ItemsSource="{Binding Path=ScaleModelsList}" >
@@ -101,6 +157,9 @@
                         <ComboBox FontSize="20" MinHeight="30" MaxHeight="30" MinWidth="100" MaxWidth="100" Margin="10" ItemsSource="{Binding Path=ResistiveModel.TypeOptions}" SelectedValue="{Binding Path=ComboSelectedType}" />
                     </StackPanel>
                 </StackPanel>
+                <Border CornerRadius="20" Background="LightGray" Width="200" Height="200" Margin="0,100,0,0" BorderThickness="2" BorderBrush="Black">
+                    <Image Source="Images/ResistiveProbe.jpg" />
+                </Border>
             </StackPanel>
         </Border>
 
@@ -111,13 +170,45 @@
                     <TextBlock HorizontalAlignment="center" Margin="0,50,0,0" Text="Number" FontSize="30" FontWeight="SemiBold" />
                     <TextBox Background="{Binding Path=BgColor}" Text="{Binding Path=TextBoxText, UpdateSourceTrigger=PropertyChanged}" Margin="10" MinHeight="30" MinWidth="100" MaxWidth="100" MaxHeight="30" FontSize="20" TextChanged="TextBox_TextChanged" ></TextBox>
                 </StackPanel>
+                <Border CornerRadius="20" Background="LightGray" Width="200" Height="200" Margin="0,100,0,0" BorderThickness="2" BorderBrush="Black">
+                    <Image Source="Images/MicrowaveProbe.jpg" />
+                </Border>
             </StackPanel>
         </Border>
 
         <Border Grid.Row="3" Grid.ColumnSpan="3" BorderBrush="Black" BorderThickness="1">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
                 <TextBlock FontSize="25" Margin="0,15,100,15" VerticalAlignment="Center" FontWeight="SemiBold" Text="{Binding Path=Status}" />
-                <Button FontSize="25" Margin="0,15,100,15" Padding="10" FontWeight="bold" Click="Button_Save_Click" >Save</Button>
+                
+                <Button Click="Button_Save_Click" Margin="0,15,100,15" >
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="20"/>
+                        </Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Content" Value="Save" />
+                            <Setter Property="FontSize" Value="25" />
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="Foreground" Value="Black"/>
+                            
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="LightGray" BorderBrush="Black" BorderThickness="2" Padding="5">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Foreground" Value="Gray"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+
             </StackPanel>
         </Border>
         

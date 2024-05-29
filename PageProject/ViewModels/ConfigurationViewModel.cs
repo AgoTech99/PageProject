@@ -84,8 +84,8 @@ namespace PageProject.ViewModels
             { 
                 if (value != 0)
                 {
+                    ResistiveModel.ProbeNumber = value;
                     Status = "";
-                    isTypeSelected = false;
                     PortCount += value-previousComboSelectedNumber;
                     previousComboSelectedNumber = value;
                     comboSelectedNumber = value;
@@ -94,6 +94,7 @@ namespace PageProject.ViewModels
                 }
                 else
                 {
+                    ResistiveModel.ProbeNumber = 0;
                     Status = "";
                     isTypeSelected = true;
                     comboSelectedNumber = value;
@@ -178,35 +179,32 @@ namespace PageProject.ViewModels
 
         public void ChangePortCount()
         {
-            int zambo = portCount;
+            int pC = portCount;
             MultiserialModelsList.Clear();
-
-            while ((zambo / 8) >= 1) 
+            while ((pC / 8) >= 1) 
             {
-                zambo -= 8;
-                MultiserialModelsList.Add(new MultiserialModel(MultiserialModelsList.Count()+1, 8));
+                pC -= 8;
+                MultiserialModelsList.Add(new MultiserialModel(MultiserialModelsList.Count + 1, 8));
             }
-            while (zambo > 0)
+            while (pC > 0)
             {
-                zambo--;
+                pC--;
                 try
                 {
-                    if (MultiserialModelsList[MultiserialModelsList.Count() - 1].ActivePort < 8)
+                    if (MultiserialModelsList[MultiserialModelsList.Count - 1].ActivePort < 8)
                     {
-                        MultiserialModelsList[MultiserialModelsList.Count() - 1].ActivePort++;
+                        MultiserialModelsList[MultiserialModelsList.Count - 1].ActivePort++;
                     }
                     else
                     {
-                        MultiserialModelsList.Add(new MultiserialModel(MultiserialModelsList.Count() + 1, 1));
+                        MultiserialModelsList.Add(new MultiserialModel(MultiserialModelsList.Count + 1, 1));
                     }
-                    
                 }
                 catch
                 {
-                    MultiserialModelsList.Add(new MultiserialModel(MultiserialModelsList.Count() + 1,1));
+                    MultiserialModelsList.Add(new MultiserialModel(MultiserialModelsList.Count + 1,1));
                 }
             }
-
         }
 
         public void TextBoxChanged()
@@ -219,6 +217,7 @@ namespace PageProject.ViewModels
                     if (number >= 0 && number <= 15)
                     {
                         Status = "";
+                        MicrowaveModel.ProbeNumber = number;
                         isTextInputOk = true;
                         BgColor = Brushes.Transparent;
                         PortCount += number-previousTextBoxNumber;
@@ -253,7 +252,7 @@ namespace PageProject.ViewModels
             OnPropertyChanged(nameof(TextBoxText));
         }
 
-        public void CheckAll()
+        public bool CheckAll()
         {
             if (ScaleModelsList.Count() > 0)
             {
@@ -261,30 +260,39 @@ namespace PageProject.ViewModels
                 {
                     if (comboSelectedNumber == 0)
                     {
-                        Status = "All Ok";
+                        Status = "";
+                        return true;
                     }
                     else
                     {
                         if (isTypeSelected)
                         {
-                            Status = "All Ok";
+                            Status = "";
+                            return true;
                         }
                         else
                         {
                             Status = "Resistive Type Not Selected";
+                            return false;
                         }
                     }
                 }
                 else
                 {
                     Status = "Text Input Is Incorrect";
+                    return false;
                 }
             }
             else
             {
                 Status = "You Must Add At Least One Scale";
+                return false;
             }
         }
+
+
+
+
 
 
         protected virtual void OnPropertyChanged(string propertyName)

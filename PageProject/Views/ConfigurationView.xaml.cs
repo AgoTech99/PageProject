@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using PageProject.Models;
 using PageProject.ViewModels;
 
 namespace PageProject.Views
@@ -18,17 +19,20 @@ namespace PageProject.Views
 
         public void WindowClosed(object? sender, EventArgs e) 
         {
-            this.Owner.Show();
+            if (this.Owner.IsActive)
+            {
+                this.Owner.Show();
+            }
         }
 
         private void Button_Plus_Click(object sender, RoutedEventArgs e)
         {
-            _confVM.RemoveScale();
+            _confVM.AddScale();
         }
 
         private void Button_Minus_Click(object sender, RoutedEventArgs e)
         {
-            _confVM.AddScale();
+            _confVM.RemoveScale();
         }
 
         private void TextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
@@ -38,8 +42,17 @@ namespace PageProject.Views
 
         private void Button_Save_Click(object sender, RoutedEventArgs e)
         {
-            _confVM.CheckAll();
-        }
+            if (_confVM.CheckAll())
+            {
+                SummaryModel SM = new(_confVM.MultiserialModelsList, _confVM.ScaleModelsList, _confVM.ResistiveModel.ProbeNumber, _confVM.ResistiveModel.ProbeType, _confVM.MicrowaveModel.ProbeNumber);
 
+                SummaryViewModel SVM = new(SM);
+
+                SummaryView SV = new(SVM);
+                SV.Owner = this;
+                SV.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                SV.ShowDialog();
+            }
+        }
     }
 }

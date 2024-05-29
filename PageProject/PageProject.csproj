@@ -9,4 +9,18 @@
     <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Views\Images\MicrowaveProbe.jpg" />
+    <None Remove="Views\Images\ResistiveProbe.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Views\Images\MicrowaveProbe.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Views\Images\ResistiveProbe.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
 </Project>
