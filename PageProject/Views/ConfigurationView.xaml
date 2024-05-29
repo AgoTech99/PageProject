@@ -168,7 +168,7 @@
                 <TextBlock Margin="20" Text="Microwave Probes" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center" />
                 <StackPanel HorizontalAlignment="Center">
                     <TextBlock HorizontalAlignment="center" Margin="0,50,0,0" Text="Number" FontSize="30" FontWeight="SemiBold" />
-                    <TextBox Background="{Binding Path=BgColor}" Text="{Binding Path=TextBoxText, UpdateSourceTrigger=PropertyChanged}" Margin="10" MinHeight="30" MinWidth="100" MaxWidth="100" MaxHeight="30" FontSize="20" TextChanged="TextBox_TextChanged" ></TextBox>
+                    <TextBox Background="{Binding Path=BgColor}" Text="{Binding Path=TextBoxText, UpdateSourceTrigger=PropertyChanged}" PreviewKeyDown="TextBox_PreviewKeyDown" Margin="10" MinHeight="30" MinWidth="100" MaxWidth="100" MaxHeight="30" FontSize="20" TextChanged="TextBox_TextChanged" ></TextBox>
                 </StackPanel>
                 <Border CornerRadius="20" Background="LightGray" Width="200" Height="200" Margin="0,100,0,0" BorderThickness="2" BorderBrush="Black">
                     <Image Source="Images/MicrowaveProbe.jpg" />

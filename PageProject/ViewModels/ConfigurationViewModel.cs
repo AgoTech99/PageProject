@@ -27,6 +27,8 @@ namespace PageProject.ViewModels
         private bool isTypeSelected;
         private bool isTextInputOk = true;
 
+
+
         public ObservableCollection<MultiserialModel> MultiserialModelsList
         {
             get { return multiSerialModelsList; }
@@ -212,30 +214,19 @@ namespace PageProject.ViewModels
             bool result = int.TryParse(TextBoxText, out int number);
             if (textBoxText != "")
             {
-                if (result)
+                if (number >= 0 && number <= 15)
                 {
-                    if (number >= 0 && number <= 15)
-                    {
-                        Status = "";
-                        MicrowaveModel.ProbeNumber = number;
-                        isTextInputOk = true;
-                        BgColor = Brushes.Transparent;
-                        PortCount += number-previousTextBoxNumber;
-                        previousTextBoxNumber = number;
-                    }
-                    else
-                    {
-                        isTextInputOk = false;
-                        Status = "Number Must Be Between 0 and 15";
-                        PortCount -= previousTextBoxNumber;
-                        previousTextBoxNumber = 0;
-                        BgColor = Brushes.Red;
-                    }
+                    Status = "";
+                    MicrowaveModel.ProbeNumber = number;
+                    isTextInputOk = true;
+                    BgColor = Brushes.Transparent;
+                    PortCount += number-previousTextBoxNumber;
+                    previousTextBoxNumber = number;
                 }
                 else
                 {
                     isTextInputOk = false;
-                    Status = "Literal Input Is Not Allowed";
+                    Status = "Number Must Be Between 0 and 15";
                     PortCount -= previousTextBoxNumber;
                     previousTextBoxNumber = 0;
                     BgColor = Brushes.Red;

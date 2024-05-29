@@ -26,6 +26,7 @@ namespace PageProject.Views
 
         private void Button_Confirm_Click(object sender, RoutedEventArgs e)
         {
+            this.Owner.Close();
             this.Owner.Owner.Close();
         }
     }
