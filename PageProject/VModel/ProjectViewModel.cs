@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Windows.Controls;
 using System.Windows.Media;
 using static System.Net.Mime.MediaTypeNames;
@@ -14,9 +15,11 @@ namespace PageProject.VModel
 
     public class ProjectViewModel : INotifyPropertyChanged
     {
-        public SondaaMicroonde SondaaMicroonde;
+        public SondaaMicroonde SondaaMicroonde { get; set; }
 
-        public SondaResistiva SondaResistiva;
+        public SondaResistiva SondaResistiva { get; set; }
+
+  
 
         private ObservableCollection<Router> routers;
         public ObservableCollection<Router> Routers
@@ -155,16 +158,15 @@ namespace PageProject.VModel
                 }
             }
             */
-        public void Check_TextBox(bool check, TextBox textBox)
+        public void Check_TextBox(TextBox textBox)
         {
-            if (check)
+            if (textBox.Text != "")
             {
-
+                if (Convert.ToInt32(textBox.Text) > 11)
+                    textBox.Background = new SolidColorBrush(Colors.Red);
+                else textBox.Background = new SolidColorBrush(Colors.White);
             }
-            else
-            {
 
-            }
         }
         public void Check_ComboBox(string text)
         {
@@ -178,7 +180,9 @@ namespace PageProject.VModel
         public void check_router_plus(int Device)
         {
             if (routers.Count == 0)
-                routers.Add(new Router($"Router{routers.Count + 1}"));
+            {
+                routers.Add(new Router($"Router{routers.Count + 1}"));              
+            }
 
             for (int i = 0; i < Device; i++)
             {
@@ -188,8 +192,13 @@ namespace PageProject.VModel
                     {
                         routers.Add(new Router($"Router{routers.Count + 1}"));
                         routers[routers.Count - 1].Active_Port += 1;
+                        routers[routers.Count - 1].Pin.Add(1);
                     }
-                    else routers[routers.Count - 1].Active_Port += 1;
+                    else
+                    {
+                        routers[routers.Count - 1].Active_Port += 1;
+                        routers[routers.Count - 1].Pin.Add(1);
+                    }                  
                 }
 
             }
@@ -202,9 +211,14 @@ namespace PageProject.VModel
                 {
                     if (routers[routers.Count - 1].Active_Port == 1)
                     {
-                        routers.Remove(routers[routers.Count - 1]);
+                        routers.Remove(routers[routers.Count - 1]);                        
+                        
                     }
-                    else routers[routers.Count - 1].Active_Port -= 1;
+                    else
+                    {
+                        routers[routers.Count - 1].Active_Port -= 1;
+                        routers[routers.Count - 1].Pin.Remove(routers[routers.Count - 1].Pin.Count - 1);
+                    }
                 }
             }
                 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,18 @@ namespace PageProject.Model
 
         public List<int> Port= new List<int> ();
 
-
+        private ObservableCollection<int> pin;
+        public ObservableCollection<int> Pin
+        {
+            get
+            {
+                return pin;
+            }
+            set
+            {
+                pin = value;
+            }
+        }
 
         private int active_port;
         public int Active_Port
@@ -42,6 +54,7 @@ namespace PageProject.Model
         public Router(string nome)
         {
             name=nome;
+            pin =new ObservableCollection<int> ();  
         }
 
 

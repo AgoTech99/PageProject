@@ -2,6 +2,7 @@
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace PageProject.View
 {
@@ -32,17 +33,9 @@ namespace PageProject.View
 
         private void TextBox_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            if (e.Key >= System.Windows.Input.Key.NumPad0 && e.Key <= System.Windows.Input.Key.NumPad9 && e.Key >= System.Windows.Input.Key.D0 && e.Key <= System.Windows.Input.Key.D9)
-            {
+            //System.Diagnostics.Debug.WriteLine(e.Key);
+            if (!(e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9 || e.Key >= Key.D0 && e.Key <= Key.D9 || e.Key == Key.Left || e.Key == Key.Right || e.Key == Key.Back || e.Key == Key.Tab))
                 e.Handled = true;
-                if (sender is TextBox textBox)
-                    VModel.Check_TextBox(true, textBox);
-            }
-            else 
-            {
-                if (sender is TextBox textBox)
-                    VModel.Check_TextBox(false, textBox);
-            }
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -52,6 +45,13 @@ namespace PageProject.View
                 VModel.Check_ComboBox(Convert.ToString( comboBox.SelectedValue));
                 
             }
+        }
+
+        private void TextBox_PreviewKeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9 || e.Key >= Key.D0 && e.Key <= Key.D9 || e.Key == Key.Left || e.Key == Key.Right || e.Key == Key.Back || e.Key == Key.Tab)
+                if (sender is TextBox textBox)
+                    VModel.Check_TextBox(textBox);
         }
     }
 }
