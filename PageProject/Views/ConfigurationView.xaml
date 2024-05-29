@@ -158,7 +158,7 @@
                     </StackPanel>
                     <StackPanel Margin="20,0,20,0" Visibility="{Binding Path=PanelVisibility}">
                         <TextBlock HorizontalAlignment="center"  Text="Type" FontSize="30" FontWeight="SemiBold" />
-                        <ComboBox FontSize="20" MinHeight="30" MaxHeight="30" MinWidth="100" MaxWidth="100" Margin="10" ItemsSource="{Binding Path=ResistiveModel.TypeOptions}" SelectedValue="{Binding Path=ComboSelectedType}" />
+                        <ComboBox FontSize="20" MinHeight="30" MaxHeight="30" MinWidth="100" MaxWidth="100" Margin="10" ItemsSource="{Binding Path=ResistiveModel.TypeOption}" SelectedValue="{Binding Path=ComboSelectedType}" />
                     </StackPanel>
                 </StackPanel>
                 <Border CornerRadius="20" Background="LightGray" Width="200" Height="200" Margin="0,100,0,0" BorderThickness="2" BorderBrush="Black">

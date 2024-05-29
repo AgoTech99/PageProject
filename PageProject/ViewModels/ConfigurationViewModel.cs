@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Media;
+using static PageProject.Models.EnumResistive;
 
 namespace PageProject.ViewModels
 {
@@ -20,7 +21,7 @@ namespace PageProject.ViewModels
 
         private int portCount;
         private int comboSelectedNumber;
-        private int comboSelectedType;
+        private ResistiveEnum comboSelectedType;
         private int previousComboSelectedNumber;
         private int previousTextBoxNumber;
 
@@ -107,14 +108,14 @@ namespace PageProject.ViewModels
             }
         }
 
-        public int ComboSelectedType
+        public ResistiveEnum ComboSelectedType
         {
             get { return comboSelectedType; }
             set 
             {
                 Status = "";
                 comboSelectedType = value; 
-                ResistiveModel.ProbeType = value;
+                ResistiveModel.ProbeType = (int)value;
                 isTypeSelected = true;
             }
         }
