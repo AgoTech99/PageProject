@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
+using System.Windows.Media;
 
 namespace PageProject.ViewModels
 {
@@ -11,12 +12,20 @@ namespace PageProject.ViewModels
         private ObservableCollection<ScaleModel> scaleModelsList;
         private MicrowaveModel microwaveModel;
         private ResistiveModel resistiveModel;
+        private Visibility panelVisibility = Visibility.Collapsed;
+        private SolidColorBrush bgColor;
+
         private string status;
+        private string textBoxText;
+
         private int portCount;
         private int comboSelectedNumber;
-        private Visibility panelVisibility = Visibility.Collapsed;
         private int comboSelectedType;
         private int previousComboSelectedNumber;
+        private int previousTextBoxNumber;
+
+        private bool isTypeSelected;
+        private bool isTextInputOk = true;
 
         public ObservableCollection<MultiserialModel> MultiserialModelsList
         {
@@ -75,6 +84,8 @@ namespace PageProject.ViewModels
             { 
                 if (value != 0)
                 {
+                    Status = "";
+                    isTypeSelected = false;
                     PortCount += value-previousComboSelectedNumber;
                     previousComboSelectedNumber = value;
                     comboSelectedNumber = value;
@@ -83,7 +94,10 @@ namespace PageProject.ViewModels
                 }
                 else
                 {
-                    PortCount += previousComboSelectedNumber;
+                    Status = "";
+                    isTypeSelected = true;
+                    comboSelectedNumber = value;
+                    PortCount -= previousComboSelectedNumber;
                     previousComboSelectedNumber = 0;
                     PanelVisibility = Visibility.Collapsed;
                 }
@@ -94,9 +108,31 @@ namespace PageProject.ViewModels
         {
             get { return comboSelectedType; }
             set 
-            { 
+            {
+                Status = "";
                 comboSelectedType = value; 
                 ResistiveModel.ProbeType = value;
+                isTypeSelected = true;
+            }
+        }
+
+        public SolidColorBrush BgColor
+        {
+            get { return bgColor; }
+            set 
+            {
+                bgColor = value;
+                OnPropertyChanged(nameof (BgColor));
+            }
+        }
+
+        public string TextBoxText
+        {
+            get { return textBoxText; }
+            set
+            {
+                textBoxText = value;
+                TextBoxChanged();
             }
         }
 
@@ -109,7 +145,6 @@ namespace PageProject.ViewModels
             MicrowaveModel = MM;
             ResistiveModel = RM;
         }
-
 
         public void RemoveScale()
         {
@@ -172,6 +207,83 @@ namespace PageProject.ViewModels
                 }
             }
 
+        }
+
+        public void TextBoxChanged()
+        {
+            bool result = int.TryParse(TextBoxText, out int number);
+            if (textBoxText != "")
+            {
+                if (result)
+                {
+                    if (number >= 0 && number <= 15)
+                    {
+                        Status = "";
+                        isTextInputOk = true;
+                        BgColor = Brushes.Transparent;
+                        PortCount += number-previousTextBoxNumber;
+                        previousTextBoxNumber = number;
+                    }
+                    else
+                    {
+                        isTextInputOk = false;
+                        Status = "Number Must Be Between 0 and 15";
+                        PortCount -= previousTextBoxNumber;
+                        previousTextBoxNumber = 0;
+                        BgColor = Brushes.Red;
+                    }
+                }
+                else
+                {
+                    isTextInputOk = false;
+                    Status = "Literal Input Is Not Allowed";
+                    PortCount -= previousTextBoxNumber;
+                    previousTextBoxNumber = 0;
+                    BgColor = Brushes.Red;
+                }
+            }
+            else
+            {
+                Status = "";
+                isTextInputOk = true;
+                PortCount -= previousTextBoxNumber;
+                previousTextBoxNumber = 0;
+                BgColor = Brushes.Transparent;
+            }
+            OnPropertyChanged(nameof(TextBoxText));
+        }
+
+        public void CheckAll()
+        {
+            if (ScaleModelsList.Count() > 0)
+            {
+                if (isTextInputOk)
+                {
+                    if (comboSelectedNumber == 0)
+                    {
+                        Status = "All Ok";
+                    }
+                    else
+                    {
+                        if (isTypeSelected)
+                        {
+                            Status = "All Ok";
+                        }
+                        else
+                        {
+                            Status = "Resistive Type Not Selected";
+                        }
+                    }
+                }
+                else
+                {
+                    Status = "Text Input Is Incorrect";
+                }
+            }
+            else
+            {
+                Status = "You Must Add At Least One Scale";
+            }
         }
 
 

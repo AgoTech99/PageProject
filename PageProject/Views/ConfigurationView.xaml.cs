@@ -13,7 +13,6 @@ namespace PageProject.Views
             DataContext = CVM;
             this.WindowState = WindowState.Maximized;
             this.Closed += WindowClosed;
-
             InitializeComponent();
         }
 
@@ -31,5 +30,16 @@ namespace PageProject.Views
         {
             _confVM.AddScale();
         }
+
+        private void TextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            _confVM.TextBoxChanged();
+        }
+
+        private void Button_Save_Click(object sender, RoutedEventArgs e)
+        {
+            _confVM.CheckAll();
+        }
+
     }
 }

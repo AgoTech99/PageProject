@@ -98,7 +98,7 @@
                     </StackPanel>
                     <StackPanel Margin="20,0,20,0" Visibility="{Binding Path=PanelVisibility}">
                         <TextBlock HorizontalAlignment="center"  Text="Type" FontSize="30" FontWeight="SemiBold" />
-                        <ComboBox FontSize="20" MinHeight="30" MaxHeight="30" MinWidth="100" MaxWidth="100" Margin="10" ItemsSource="{Binding Path=ResistiveModel.TypeOptions}"  />
+                        <ComboBox FontSize="20" MinHeight="30" MaxHeight="30" MinWidth="100" MaxWidth="100" Margin="10" ItemsSource="{Binding Path=ResistiveModel.TypeOptions}" SelectedValue="{Binding Path=ComboSelectedType}" />
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
@@ -109,7 +109,7 @@
                 <TextBlock Margin="20" Text="Microwave Probes" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center" />
                 <StackPanel HorizontalAlignment="Center">
                     <TextBlock HorizontalAlignment="center" Margin="0,50,0,0" Text="Number" FontSize="30" FontWeight="SemiBold" />
-                    <TextBox Background="Transparent" Margin="10" MinHeight="30" MinWidth="100" MaxWidth="100" MaxHeight="30" FontSize="20" ></TextBox>
+                    <TextBox Background="{Binding Path=BgColor}" Text="{Binding Path=TextBoxText, UpdateSourceTrigger=PropertyChanged}" Margin="10" MinHeight="30" MinWidth="100" MaxWidth="100" MaxHeight="30" FontSize="20" TextChanged="TextBox_TextChanged" ></TextBox>
                 </StackPanel>
             </StackPanel>
         </Border>
@@ -117,7 +117,7 @@
         <Border Grid.Row="3" Grid.ColumnSpan="3" BorderBrush="Black" BorderThickness="1">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
                 <TextBlock FontSize="25" Margin="0,15,100,15" VerticalAlignment="Center" FontWeight="SemiBold" Text="{Binding Path=Status}" />
-                <Button FontSize="25" Margin="0,15,100,15" Padding="10" FontWeight="bold" >Save</Button>
+                <Button FontSize="25" Margin="0,15,100,15" Padding="10" FontWeight="bold" Click="Button_Save_Click" >Save</Button>
             </StackPanel>
         </Border>
         
