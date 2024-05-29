@@ -26,30 +26,30 @@ namespace PageProject.View
         private void Button_minus(object sender, RoutedEventArgs e)
         {
             VModel.Change_scale("-");
+           
         }
 
-
-        private void TextBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
-        {
-            if (sender is TextBox textBox)
-                VModel.Check_TextBox(textBox.Text);
-        }
 
         private void TextBox_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            if(e.Key == System.Windows.Input.Key.Enter )
+            if (e.Key >= System.Windows.Input.Key.NumPad0 && e.Key <= System.Windows.Input.Key.NumPad9 && e.Key >= System.Windows.Input.Key.D0 && e.Key <= System.Windows.Input.Key.D9)
             {
                 e.Handled = true;
+                if (sender is TextBox textBox)
+                    VModel.Check_TextBox(true, textBox);
             }
-            if (sender is TextBox textBox)
-                VModel.Check_TextBox(textBox.Text);
+            else 
+            {
+                if (sender is TextBox textBox)
+                    VModel.Check_TextBox(false, textBox);
+            }
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (sender is ComboBox comboBox)
             {
-                VModel.check_router(Convert.ToInt32( comboBox.SelectedValue));
+                VModel.Check_ComboBox(Convert.ToString( comboBox.SelectedValue));
                 
             }
         }

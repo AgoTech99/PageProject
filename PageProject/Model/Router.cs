@@ -8,6 +8,11 @@ namespace PageProject.Model
 {
     public class Router
     {
+
+        public List<int> Port= new List<int> ();
+
+
+
         private int active_port;
         public int Active_Port
         {
