@@ -13,7 +13,11 @@ namespace PageProject.Models
         public int ActivePort
         {
             get { return activePort; }
-            set { activePort = value; }
+            set 
+            { 
+                activePort = value; 
+                PortsList = new(Enumerable.Range(1,value));
+            }
         }
 
         public string PortName
