@@ -1,5 +1,4 @@
-﻿using PageProject.Models;
-using PageProject.ViewModels;
+﻿using PageProject.ViewModels;
 using System.Windows;
 
 namespace PageProject.Views

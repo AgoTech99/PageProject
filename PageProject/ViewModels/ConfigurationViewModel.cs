@@ -188,24 +188,9 @@ namespace PageProject.ViewModels
                 pC -= 8;
                 MultiserialModelsList.Add(new MultiserialModel(MultiserialModelsList.Count + 1, 8));
             }
-            while (pC > 0)
+            if (pC != 0)
             {
-                pC--;
-                try
-                {
-                    if (MultiserialModelsList[MultiserialModelsList.Count - 1].ActivePort < 8)
-                    {
-                        MultiserialModelsList[MultiserialModelsList.Count - 1].ActivePort++;
-                    }
-                    else
-                    {
-                        MultiserialModelsList.Add(new MultiserialModel(MultiserialModelsList.Count + 1, 1));
-                    }
-                }
-                catch
-                {
-                    MultiserialModelsList.Add(new MultiserialModel(MultiserialModelsList.Count + 1,1));
-                }
+                MultiserialModelsList.Add(new(MultiserialModelsList.Count + 1, pC));
             }
         }
 
