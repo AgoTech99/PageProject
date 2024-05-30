@@ -44,7 +44,7 @@
                             <StackPanel Margin="103,0,0,0" ToolTip="{Binding Path=PortName}">
                                 <TextBlock FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Center" Text="{Binding Path=PortName}" />
                                 <TextBlock FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Center" Text="{Binding Path=ActiveNumberDescription}"/>
-                                <Border Height="80" Width="263" BorderBrush="Black" BorderThickness="3" >
+                                <Border Height="80" Width="{Binding Path=Width}" BorderBrush="Black" BorderThickness="3" >
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" >
                                         <ItemsControl ItemsSource="{Binding Path=PortsList}" >
                                             <ItemsControl.ItemsPanel>
@@ -68,84 +68,92 @@
         </Border>
 
         <Border Grid.Row="2" BorderBrush="Black" BorderThickness="1" >
-            <StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                    <TextBlock Margin="20" Text="Scales" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center" />
-                    
-                    <Button Click="Button_Minus_Click" Margin="40,0,0,0" MinHeight="50" MinWidth="50" MaxHeight="50" MaxWidth="50" >
-                        <Button.Resources>
-                            <Style TargetType="Border">
-                                <Setter Property="CornerRadius" Value="50"/>
-                            </Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Content" Value="-" />
-                                <Setter Property="FontSize" Value="25" />
-                                <Setter Property="FontWeight" Value="Heavy"/>
-                                <Setter Property="Foreground" Value="Black"/>
+                        <TextBlock Margin="20" Text="Scales" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center" />
+                        <Button Click="Button_Minus_Click" Margin="40,0,0,0" MinHeight="50" MinWidth="50" MaxHeight="50" MaxWidth="50" >
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="50"/>
+                                </Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Content" Value="-" />
+                                    <Setter Property="FontSize" Value="25" />
+                                    <Setter Property="FontWeight" Value="Heavy"/>
+                                    <Setter Property="Foreground" Value="Black"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="Button">
+                                                <Border Background="LightGray" BorderBrush="Black" BorderThickness="2">
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-8,0,0" />
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Foreground" Value="Gray"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+                        <Button Click="Button_Plus_Click" Margin="20,0,0,0" MinHeight="50" MinWidth="50" MaxHeight="50" MaxWidth="50" >
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="50"/>
+                                </Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Content" Value="+" />
+                                    <Setter Property="FontSize" Value="25" />
+                                    <Setter Property="FontWeight" Value="Heavy"/>
+                                    <Setter Property="Foreground" Value="Black"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="Button">
+                                                <Border Background="LightGray" BorderBrush="Black" BorderThickness="2" >
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-7,0,0" />
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Foreground" Value="Gray"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+                    </StackPanel>
 
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="Button">
-                                            <Border Background="LightGray" BorderBrush="Black" BorderThickness="2">
-                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-8,0,0" />
-                                            </Border>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Foreground" Value="Gray"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Resources>
-                    </Button>
-                    
-                    <Button Click="Button_Plus_Click" Margin="20,0,0,0" MinHeight="50" MinWidth="50" MaxHeight="50" MaxWidth="50" >
-                        <Button.Resources>
-                            <Style TargetType="Border">
-                                <Setter Property="CornerRadius" Value="50"/>
-                            </Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Content" Value="+" />
-                                <Setter Property="FontSize" Value="25" />
-                                <Setter Property="FontWeight" Value="Heavy"/>
-                                <Setter Property="Foreground" Value="Black"/>
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="Button">
-                                            <Border Background="LightGray" BorderBrush="Black" BorderThickness="2" >
-                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-7,0,0" />
-                                            </Border>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Foreground" Value="Gray"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Resources>
-                    </Button>
-                    
-                </StackPanel>
-
-                <ItemsControl ItemsSource="{Binding Path=ScaleModelsList}" >
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapPanel/>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <Border CornerRadius="20" Margin="20" BorderThickness="2" Background="LightGray" BorderBrush="Black" Padding="20,15,20,15" Width="199">
-                                <TextBlock FontSize="30" FontWeight="Bold" HorizontalAlignment="Center" Text="{Binding Path=Name}"></TextBlock>
-                            </Border>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-            </StackPanel>
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden">
+                    <ItemsControl Grid.Row="1" ItemsSource="{Binding Path=ScaleModelsList}" >
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border CornerRadius="20" Margin="20" BorderThickness="2" Background="LightGray" BorderBrush="Black" Padding="20,15,20,15" Width="199">
+                                    <TextBlock FontSize="30" FontWeight="Bold" HorizontalAlignment="Center" Text="{Binding Path=Name}"></TextBlock>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+                
+            </Grid>
         </Border>
 
         <Border Grid.Row="2" Grid.Column="1" BorderBrush="Black" BorderThickness="1">

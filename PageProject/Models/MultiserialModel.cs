@@ -37,7 +37,8 @@ namespace PageProject.Models
             set { portsList = value; }
         }
 
-
+        private static int width;
+        public static int Width { get => width; set => width = value; }
 
         public MultiserialModel(int number, int ports = 0)
         { 

@@ -23,7 +23,7 @@
                         <Setter.Value>
                             <ControlTemplate TargetType="Button">
                                 <Border Background="LightGray" BorderBrush="Black" BorderThickness="2" Padding="5">
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-5,0,0" />
                                 </Border>
                             </ControlTemplate>
                         </Setter.Value>
@@ -32,13 +32,41 @@
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Foreground" Value="Gray"/>
                         </Trigger>
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="FontSize" Value="26" />
+                    </Style.Triggers>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Margin="0,60,0,-85">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+                <Style TargetType="Button">
+                    <Setter Property="Content" Value="Constants" />
+                    <Setter Property="FontSize" Value="15" />
+                    <Setter Property="FontWeight" Value="SemiBold"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="Height" Value="25"/>
+                    <Setter Property="Width" Value="85"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="LightGray" BorderBrush="Black" BorderThickness="2" Padding="5">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-5,0,0" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Gray"/>
                         </Trigger>
                     </Style.Triggers>
                 </Style>
             </Button.Resources>
         </Button>
     </StackPanel>
+    
     
 </Window>

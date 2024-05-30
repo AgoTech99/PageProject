@@ -144,11 +144,20 @@ namespace PageProject.ViewModels
         private int MaxScalesNumber { get; set; }
         private int MaxMicrowavesNumber { get; set; }
 
-       
+        private int maxMultiserialPorts;
+        private int MaxMultiserialPorts
+        {
+            get { return maxMultiserialPorts; }
+            set
+            {
+                maxMultiserialPorts = value;
+                MultiserialModel.Width = value * 10 + 20 * (value + 1) + 3;
+            } 
+        }
 
 
 
-        public ConfigurationViewModel(ObservableCollection<MultiserialModel> MSMList, ObservableCollection<ScaleModel> SMList, ResistiveModel RM, MicrowaveModel MM, int MaxScale = 16, int MaxMicrowaves = 15) 
+        public ConfigurationViewModel(ObservableCollection<MultiserialModel> MSMList, ObservableCollection<ScaleModel> SMList, ResistiveModel RM, MicrowaveModel MM, int MaxScale, int MaxMicrowaves, int MaxPorts) 
         {
             MultiserialModelsList = MSMList;
             ScaleModelsList = SMList;
@@ -157,7 +166,7 @@ namespace PageProject.ViewModels
             
             MaxScalesNumber = MaxScale;
             MaxMicrowavesNumber = MaxMicrowaves;
-            
+            MaxMultiserialPorts = MaxPorts;
         }
 
 
@@ -195,10 +204,10 @@ namespace PageProject.ViewModels
         {
             int pC = portCount;
             MultiserialModelsList.Clear();
-            while ((pC / 8) >= 1)
+            while ((pC / MaxMultiserialPorts) >= 1)
             {
-                pC -= 8;
-                MultiserialModelsList.Add(new MultiserialModel(MultiserialModelsList.Count + 1, 8));
+                pC -= MaxMultiserialPorts;
+                MultiserialModelsList.Add(new MultiserialModel(MultiserialModelsList.Count + 1, MaxMultiserialPorts));
             }
             if (pC != 0)
             {
@@ -223,7 +232,7 @@ namespace PageProject.ViewModels
                 else
                 {
                     isTextInputOk = false;
-                    Status = "Number Must Be Between 0 and 15";
+                    Status = $"Number Must Be Between 0 and {MaxMicrowavesNumber}";
                     PortCount -= previousTextBoxNumber;
                     previousTextBoxNumber = 0;
                     BgColor = Brushes.Red;
