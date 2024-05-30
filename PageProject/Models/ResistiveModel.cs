@@ -6,6 +6,7 @@ namespace PageProject.Models
     {
         private int probeType;
         private List<int> numberOptions;
+        private int Max { get; set; }
 
         public int ProbeType
         {
@@ -21,11 +22,12 @@ namespace PageProject.Models
 
         public List<ResistiveEnum> TypeOption { get; set; } = EnumHelper.EnumToList<ResistiveEnum>().ToList();
 
-        public ResistiveModel() 
+        public ResistiveModel(int max = 9) 
         {
+            Max = max;
             ProbeNumber = 0;
             ProbeType = 0;
-            NumberOptions = new List<int>(Enumerable.Range(0, 10).ToList());
+            NumberOptions = new List<int>(Enumerable.Range(0, Max+1).ToList());
         }
     }
 }

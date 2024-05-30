@@ -141,14 +141,25 @@ namespace PageProject.ViewModels
         }
 
 
+        private int MaxScalesNumber { get; set; }
+        private int MaxMicrowavesNumber { get; set; }
 
-        public ConfigurationViewModel(ObservableCollection<MultiserialModel> MSMList, ObservableCollection<ScaleModel> SMList, ResistiveModel RM, MicrowaveModel MM) 
+       
+
+
+
+        public ConfigurationViewModel(ObservableCollection<MultiserialModel> MSMList, ObservableCollection<ScaleModel> SMList, ResistiveModel RM, MicrowaveModel MM, int MaxScale = 16, int MaxMicrowaves = 15) 
         {
             MultiserialModelsList = MSMList;
             ScaleModelsList = SMList;
             MicrowaveModel = MM;
             ResistiveModel = RM;
+            
+            MaxScalesNumber = MaxScale;
+            MaxMicrowavesNumber = MaxMicrowaves;
+            
         }
+
 
         public void RemoveScale()
         {
@@ -167,7 +178,7 @@ namespace PageProject.ViewModels
 
         public void AddScale()
         {
-            if (ScaleModelsList.Count < 16)
+            if (ScaleModelsList.Count < MaxScalesNumber)
             {
                 PortCount++;
                 ScaleModelsList.Add(new ScaleModel(ScaleModelsList.Count() + 1));
@@ -184,7 +195,7 @@ namespace PageProject.ViewModels
         {
             int pC = portCount;
             MultiserialModelsList.Clear();
-            while ((pC / 8) >= 1) 
+            while ((pC / 8) >= 1)
             {
                 pC -= 8;
                 MultiserialModelsList.Add(new MultiserialModel(MultiserialModelsList.Count + 1, 8));
@@ -200,7 +211,7 @@ namespace PageProject.ViewModels
             bool result = int.TryParse(TextBoxText, out int number);
             if (textBoxText != "")
             {
-                if (number >= 0 && number <= 15)
+                if (number >= 0 && number <= MaxMicrowavesNumber)
                 {
                     Status = "";
                     MicrowaveModel.ProbeNumber = number;
