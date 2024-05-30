@@ -6,16 +6,32 @@
         xmlns:local="clr-namespace:PageProject"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-        <Button  Content="Click" Width="100" Height="50"  Click="Button_Click" BorderBrush="Blue"  Background="Aqua">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Button Grid.Column="1" Grid.Row="1" Content="Click" Width="100" Height="50"  Click="Button_Click" BorderBrush="Blue"  Background="Aqua">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="20"/>
                 </Style>
             </Button.Resources>
-            <Button.Triggers >
-
-            </Button.Triggers>
         </Button>
-    </StackPanel>
+        <Button Grid.Column="1" Grid.Row="2" Content="ciao" Width="100" Height="50"  Click="Button_Click_1" BorderBrush="Blue"  Background="Aqua">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="20"/>
+                    </Style>
+                </Button.Resources>
+
+            </Button>
+    </Grid>
 </Window>

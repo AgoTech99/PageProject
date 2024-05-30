@@ -1,11 +1,9 @@
-﻿using Microsoft.VisualBasic;
-using PageProject.Model;
+﻿using PageProject.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using System.Net.NetworkInformation;
 using System.Windows.Controls;
 using System.Windows.Media;
 using static System.Net.Mime.MediaTypeNames;
@@ -19,7 +17,8 @@ namespace PageProject.VModel
 
         public SondaResistiva SondaResistiva { get; set; }
 
-  
+        private readonly SolidColorBrush whitebrush = new SolidColorBrush(Colors.White);
+        private readonly SolidColorBrush redbrush = new SolidColorBrush(Colors.Red);
 
         private ObservableCollection<Router> routers;
         public ObservableCollection<Router> Routers
@@ -50,8 +49,8 @@ namespace PageProject.VModel
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        private List<int> sonde;
-        public List<int> Sonde
+        private ObservableCollection<int> sonde;
+        public ObservableCollection<int> Sonde
         {
             get
             {
@@ -60,6 +59,8 @@ namespace PageProject.VModel
             set
             {
                 sonde = value;
+
+
             }
         }
 
@@ -76,8 +77,28 @@ namespace PageProject.VModel
 
             }
         }
+
+        private int n_scale = 16;
+        public int N_Scale
+        {
+            get { return n_scale; }
+            set { n_scale = value;}
+        }
+
         
-       
+
+        private int n_microwaveprobe = 11;
+        public int N_MicrowaveProbe
+        {
+            get { return n_microwaveprobe; }
+            set { n_microwaveprobe = value; }
+        }
+
+        private int n_multiserial;
+        public int N_Multiserial        {
+            get { return n_multiserial; }
+            set { n_multiserial = value; }
+        }
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -90,6 +111,20 @@ namespace PageProject.VModel
             SondaResistiva = new SondaResistiva();
             sonde = SondaResistiva.Sonde;
 
+        }
+        public void Change_N_Resistive(int n_resistive)
+        {
+            if (sonde.Count < n_resistive)
+            {
+                
+                for (int i = Sonde.Count+1; i <= n_resistive;i++)
+                    sonde.Add(i);
+            }
+            else
+            {
+                for (int i = Sonde.Count; i > n_resistive;i--)
+                    sonde.RemoveAt(sonde.Count-1);
+            }
         }
 
 
@@ -109,7 +144,7 @@ namespace PageProject.VModel
             }
             else
             {
-                if (scales.Count() < 16)
+                if (scales.Count() < N_Scale)
                 {
                     scales.Add(new Bilancia($"Bilancia{scales.Count() + 1}"));
                     count_scale += 1;
@@ -122,49 +157,23 @@ namespace PageProject.VModel
 
         }
         private int Value_comboBox;
-        private int Value_TextBox;
-        /*
-
-        private static List<char> list = new List<char> { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
-
-        
-            bool check = false; 
-            foreach (char c in text) 
-            {
-                if (!list.Contains(c)) 
-                    check = true;
-            }
-
-            if (check == true)
-            {
-                textBox.Background = new SolidColorBrush(Colors.Red);
-                
-                check =false;
-            }
-            else
-            {
-                if (Convert.ToInt32(text) > 11)
-                    textBox.Background = new SolidColorBrush(Colors.Red);
-                else
-                {
-                    textBox.Background = new SolidColorBrush(Colors.White);
-                    OnPropertyChanged(nameof(textBox.Background));
-                    int value = Convert.ToInt32(text) - Value_TextBox;
-                    if (value > 0)
-                        check_router_plus(value);
-                    else
-                        check_router_minus(value*-1);
-                    Value_TextBox = Convert.ToInt32(text);
-                }
-            }
-            */
+        private int Value_textBox;
         public void Check_TextBox(TextBox textBox)
         {
             if (textBox.Text != "")
             {
-                if (Convert.ToInt32(textBox.Text) > 11)
-                    textBox.Background = new SolidColorBrush(Colors.Red);
-                else textBox.Background = new SolidColorBrush(Colors.White);
+                if (Convert.ToInt32(textBox.Text) > N_MicrowaveProbe)
+                    textBox.Background = redbrush;
+                else
+                {
+                    textBox.Background = whitebrush;
+                    int value = Convert.ToInt32(textBox.Text) - Value_textBox;
+                    if (value > 0)
+                        check_router_plus(value);
+                    else
+                        check_router_minus(value * -1);
+                    Value_textBox = Convert.ToInt32(textBox.Text);
+                }
             }
 
         }
@@ -211,13 +220,12 @@ namespace PageProject.VModel
                 {
                     if (routers[routers.Count - 1].Active_Port == 1)
                     {
-                        routers.Remove(routers[routers.Count - 1]);                        
-                        
+                        routers.Remove(routers[routers.Count - 1]);                                                
                     }
                     else
                     {
                         routers[routers.Count - 1].Active_Port -= 1;
-                        routers[routers.Count - 1].Pin.Remove(routers[routers.Count - 1].Pin.Count - 1);
+                        routers[routers.Count - 1].Pin.RemoveAt(routers[routers.Count - 1].Pin.Count - 1);                        
                     }
                 }
             }

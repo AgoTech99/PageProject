@@ -1,0 +1,35 @@
+﻿<Window x:Class="PageProject.View.ProjectCostantiView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PageProject.View"
+        mc:Ignorable="d"
+        Title="ProjectCostantiView" Height="450" Width="800">
+    
+    <Grid Margin="60">
+        <Border BorderBrush="Black" BorderThickness="4" CornerRadius="50">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="3*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="SCALE" VerticalAlignment="Center" HorizontalAlignment="Center"  FontWeight="Bold" FontSize="19"/>
+                <TextBox Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20" PreviewKeyDown="Scale_KeyDown"/>
+                <TextBlock Grid.Column="1" Text="RESISTIVE PROBE" VerticalAlignment="Center" HorizontalAlignment="Center"  FontWeight="Bold" FontSize="19"/>
+                <TextBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20" PreviewKeyDown="Resistive_KeyDown"/>
+                <TextBlock Grid.Column="2" Text="MICROWAVE PROBE" VerticalAlignment="Center" HorizontalAlignment="Center"  FontWeight="Bold" FontSize="17"/>
+                <TextBox Grid.Column="2" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20" PreviewKeyDown="Microwave_KeyDown"/>
+                <TextBlock Grid.Column="3" Text="MULTISERIAL" VerticalAlignment="Center" HorizontalAlignment="Center"  FontWeight="Bold" FontSize="19"/>
+                <TextBox Grid.Column="3" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20" PreviewKeyDown="Multiserial_KeyDown"/>
+            </Grid>
+        </Border>
+    </Grid>
+    
+</Window>

@@ -32,8 +32,7 @@ namespace PageProject.View
 
 
         private void TextBox_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
-        {
-            //System.Diagnostics.Debug.WriteLine(e.Key);
+        {            
             if (!(e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9 || e.Key >= Key.D0 && e.Key <= Key.D9 || e.Key == Key.Left || e.Key == Key.Right || e.Key == Key.Back || e.Key == Key.Tab))
                 e.Handled = true;
         }

@@ -5,18 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PageProject.View"
         xmlns:vm="clr-namespace:PageProject.VModel"
+        xmlns:converter="clr-namespace:PageProject.Converter"
         mc:Ignorable="d"
         d:DataContext ="{d:DesignInstance vm:ProjectViewModel}"
         Title="Project_View" Height="450" Width="800">
+
+    <Window.Resources>
+        <converter:ScaleIconSizeConverter x:Key="SizeConverter"/>
+    </Window.Resources>
     <Grid>
+        <!--#0c6861-->
+        <Border Background="#009186"/>
+        <Grid>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="2*" />
             <RowDefinition Height="5*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 <!--_________________________ROUTER__________________________-->
-        <Border BorderBrush="Black" BorderThickness="4">
+        
             <Grid>
+                <ScrollViewer HorizontalScrollBarVisibility="Hidden"  VerticalScrollBarVisibility="Disabled" >
                 <ItemsControl ItemsSource="{Binding Routers}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -25,9 +35,13 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel >
-                                <TextBlock Text="{Binding Path=Name}" FontSize="22" HorizontalAlignment="Center" />
-                                <Image Source="C:\stage-Federico\PageProject\PageProject\Images\router.png" Width="80" Height="15"  Margin="20,0" />
+                                <Border BorderBrush="Black" BorderThickness="4" CornerRadius="30" Margin="4,6">
+                                    <StackPanel >
+                                    
+                                        <TextBlock Text="{Binding Path=Name}" FontSize="22" HorizontalAlignment="Center" />
+                                <Image Source="C:\stage-Federico\PageProject\PageProject\Images\router.png"  
+                                       Width="{Binding ActualWidth, RelativeSource={RelativeSource  Mode=FindAncestor, AncestorType=Grid},Converter={StaticResource SizeConverter}, ConverterParameter=6.2}"
+                                       Height="{Binding ActualHeight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Grid},Converter={StaticResource SizeConverter}, ConverterParameter=2.7}"  Margin="20,0" />
                                 <ItemsControl ItemsSource="{Binding Pin}">
                                     <ItemsControl.ItemsPanel>
                                         <ItemsPanelTemplate>
@@ -37,17 +51,22 @@
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel >
-                                                <Image Source="C:\stage-Federico\PageProject\PageProject\Images\pin.png" Width="20" Height="55"  />
+                                                <Image Source="C:\stage-Federico\PageProject\PageProject\Images\pin.png" 
+                                                       Width="{Binding ActualWidth, RelativeSource={RelativeSource  Mode=FindAncestor, AncestorType=Grid},Converter={StaticResource SizeConverter}, ConverterParameter=40.2}"
+                                                       Height="{Binding ActualHeight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Grid},Converter={StaticResource SizeConverter}, ConverterParameter=2.7}"/>
                                             </StackPanel>
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
                                 </ItemsControl>
+                                
                             </StackPanel>
-                        </DataTemplate>
+                                </Border>
+                            </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
+                </ScrollViewer>
             </Grid >
-        </Border>
+        
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/>
@@ -56,10 +75,10 @@
             </Grid.ColumnDefinitions>
 
 <!--________________________RESISTANCE_SENSOR________________-->
-            <Border BorderBrush="Black" BorderThickness="4" Grid.Row="1" Grid.Column="1" >
+            <Border BorderBrush="Black" BorderThickness="4" Grid.Row="1" Grid.Column="1" CornerRadius="20">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="60"/>
                         <RowDefinition Height="3*" />
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
@@ -69,50 +88,52 @@
                             <ColumnDefinition />
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <ComboBox  HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="5,20" ItemsSource="{Binding Path=Sonde}" SelectionChanged="ComboBox_SelectionChanged"/>
-                        <ComboBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="5,20" 
+                        <ComboBox  HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="5,60" ItemsSource="{Binding Path=Sonde}" SelectionChanged="ComboBox_SelectionChanged" />
+                        <ComboBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="5,60" 
                                   ItemsSource="{Binding Path=SondaResistiva.ComunicationTypesCollection, Mode=OneWay}"/>
                     </Grid>
-                    
                 </Grid>
             </Border>
             <!--________________________-->
-            <Border BorderBrush="Black" BorderThickness="4" Grid.Row="1" Grid.Column="2">
+            <Border BorderBrush="Black" BorderThickness="4" Grid.Row="1" Grid.Column="2" CornerRadius="20">
             <Grid >
                 <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="60"/>
                         <RowDefinition Height="3*" />
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
                     <TextBlock Text="MICROWAVE PROBE" VerticalAlignment="Center" HorizontalAlignment="Center"  FontWeight="Bold" FontSize="19"/>
                     <Grid Grid.Row="1">
-                    <TextBox HorizontalAlignment="Stretch" VerticalAlignment="top" Margin="5,20" PreviewKeyDown="TextBox_PreviewKeyDown" PreviewKeyUp="TextBox_PreviewKeyUp" />
+                    <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,0" PreviewKeyDown="TextBox_PreviewKeyDown" PreviewKeyUp="TextBox_PreviewKeyUp" FontSize="23"
+                   
+                           />
                 </Grid>
             </Grid>
             </Border>
             
             <!--_________________________SCALE___________________________-->
-        <Border BorderBrush="Black" BorderThickness="4">
+        <Border BorderBrush="Black" BorderThickness="4" CornerRadius="20">
             <Grid Grid.Row="1" Grid.Column="0" >
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="60"/>
                     <RowDefinition Height="3*"/>
                 </Grid.RowDefinitions>
                 <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="1" Text="SCALE" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="27"/>
                         <Rectangle Fill="Black" Grid.Column="2" RadiusX="20" RadiusY="20" />
                     <Button Content="+" FontSize="35" Grid.Column="2" HorizontalAlignment="Right" Margin="9,0,6,5" Background="Transparent" Foreground="White" Height="auto" BorderBrush="Transparent" Click="Button_plus" />
-                    <Border Grid.Column="2" CornerRadius="20" Background="#404040" Width="30" Height="30" >
+                            <Border Grid.Column="2" CornerRadius="20" Background="#0c6861" Width="30" Height="30" >
                     <TextBlock Text="{Binding Path=Count_Scale,UpdateSourceTrigger=PropertyChanged}" Foreground="White"  HorizontalAlignment="Center" VerticalAlignment="Center" />
                     </Border>
                     <Button Content="-" FontSize="35" Grid.Column="2" HorizontalAlignment="Left" Margin="9,0,6,5" Background="Transparent" Foreground="White" Height="auto" BorderBrush="Transparent" Click="Button_minus"  />
                 </Grid>
                     <Grid Grid.Row="1">
+                        <ScrollViewer VerticalScrollBarVisibility="Hidden">
                         <ItemsControl ItemsSource="{Binding Scales}">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
@@ -121,33 +142,39 @@
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
+
                                     <StackPanel >
-                                        <Image Source="C:\stage-Federico\PageProject\PageProject\Images\scale.png" Width="60" Height="55"   />
+                                        <Image 
+                                            Source="C:\stage-Federico\PageProject\PageProject\Images\scale.png" 
+                                            Width="{Binding ActualWidth, RelativeSource={RelativeSource  Mode=FindAncestor, AncestorType=Grid},Converter={StaticResource SizeConverter}, ConverterParameter=6.2}" Margin="10" 
+                                            Height="{Binding ActualHeight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Grid},Converter={StaticResource SizeConverter}, ConverterParameter=3.7}"                                               
+                                            />
                                     </StackPanel>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
+                        </ScrollViewer>
                     </Grid>
+                    
                 </Grid>
             </Border>
         </Grid>
         
 <!--_________________________SAVE_____________________________-->
-        <Border BorderBrush="Black" BorderThickness="4" Grid.Row="2">
-        <Grid >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="4*"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Button Grid.Column="1" Content="Save" FontSize="22" Width="100" Height="50" HorizontalAlignment="Right">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="20"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
-            <TextBlock Text="" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <Grid Grid.Row="2" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="1" Content="Save" FontSize="22" Width="100" Height="50" HorizontalAlignment="Right">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="20"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <TextBlock Text="" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                </Grid>
         </Grid>
-        </Border>
     </Grid>
 </Window>
