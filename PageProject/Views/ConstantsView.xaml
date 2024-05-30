@@ -1,0 +1,93 @@
+﻿<Window x:Class="PageProject.Views.ConstantsView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PageProject.Views"
+        xmlns:vm ="clr-namespace:PageProject.ViewModels"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance vm:ConstantsViewModel}"
+        Title="ConstantsView" Height="500" Width="900">
+
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Width" Value="50"/>
+        </Style>
+    </Window.Resources>
+    
+    
+    <StackPanel HorizontalAlignment="Center">
+        <TextBlock Text="Constant Modification Tool" FontWeight="Bold" FontSize="30" Margin="20" />
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Maximum number of Multiserials :" Margin="20,20,0,20" />
+            <TextBlock Grid.Row="1" Text="Maximum number of port for each Multiserial :" Margin="20,20,0,20" />
+            <TextBlock Grid.Row="2" Text="Maximum number of Scales :" Margin="20,20,0,20" />
+            <TextBlock Grid.Row="3" Text="Maximum number of Resistive Probes :" Margin="20,20,0,20" />
+            <TextBlock Grid.Row="4" Text="Maximum number of Microwave Probes :" Margin="20,20,0,20" />
+
+            <TextBox Grid.Column="1" Margin="0,20,20,20" PreviewKeyDown="TextBox_PreviewKeyDown" Text="{Binding Path=MaxMultiserialNumber}" />
+            <TextBox Grid.Column="1" Grid.Row="1" Margin="0,20,20,20" PreviewKeyDown="TextBox_PreviewKeyDown" Text="{Binding Path=MaxMultiserialPortNumber}" />
+            <TextBox Grid.Column="1" Grid.Row="2" Margin="0,20,20,20" PreviewKeyDown="TextBox_PreviewKeyDown" Text="{Binding Path=MaxScalesNumber}" />
+            <TextBox Grid.Column="1" Grid.Row="3" Margin="0,20,20,20" PreviewKeyDown="TextBox_PreviewKeyDown" Text="{Binding Path=MaxResistiveNumber}" />
+            <TextBox Grid.Column="1" Grid.Row="4" Margin="0,20,20,20" PreviewKeyDown="TextBox_PreviewKeyDown" Text="{Binding Path=MaxMicrowaveNumber}" />
+
+
+
+            <Button Grid.Row="5" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="20" BorderBrush="Black" BorderThickness="2" Click="Button_Click" >
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="15"/>
+                    </Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Content" Value="Confirm" />
+                        <Setter Property="FontSize" Value="15" />
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="Foreground" Value="Black"/>
+
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="LightGray" BorderBrush="Black" BorderThickness="2" Padding="5">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="Gray"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+
+        </Grid>
+    </StackPanel>
+    
+    
+    
+</Window>

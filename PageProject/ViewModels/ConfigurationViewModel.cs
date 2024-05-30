@@ -157,16 +157,13 @@ namespace PageProject.ViewModels
 
 
 
-        public ConfigurationViewModel(ObservableCollection<MultiserialModel> MSMList, ObservableCollection<ScaleModel> SMList, ResistiveModel RM, MicrowaveModel MM, int MaxScale, int MaxMicrowaves, int MaxPorts) 
+        public ConfigurationViewModel(ObservableCollection<MultiserialModel> MSMList, ObservableCollection<ScaleModel> SMList, ResistiveModel RM, MicrowaveModel MM) 
         {
             MultiserialModelsList = MSMList;
             ScaleModelsList = SMList;
             MicrowaveModel = MM;
             ResistiveModel = RM;
             
-            MaxScalesNumber = MaxScale;
-            MaxMicrowavesNumber = MaxMicrowaves;
-            MaxMultiserialPorts = MaxPorts;
         }
 
 

@@ -12,17 +12,17 @@
         <Button Click="Button_Click">
             <Button.Resources>
                 <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="20"/>
+                    <Setter Property="CornerRadius" Value="15"/>
                 </Style>
                 <Style TargetType="Button">
                     <Setter Property="Content" Value="Login" />
                     <Setter Property="FontSize" Value="30" />
-                    <Setter Property="FontWeight" Value="bold"/>
+                    <Setter Property="FontWeight" Value="SemiBold"/>
                     <Setter Property="Foreground" Value="Black"/>
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="Button">
-                                <Border Background="LightGray" BorderBrush="Black" BorderThickness="2" Padding="5">
+                                <Border Background="LightGray" BorderBrush="Black" BorderThickness="2" Padding="10,2,10,2">
                                     <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-5,0,0" />
                                 </Border>
                             </ControlTemplate>
@@ -37,7 +37,7 @@
             </Button.Resources>
         </Button>
 
-        <Button Margin="0,60,0,-85">
+        <Button Margin="0,60,0,-85" Click="Button_Constant_Click" >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -47,13 +47,13 @@
                     <Setter Property="FontSize" Value="15" />
                     <Setter Property="FontWeight" Value="SemiBold"/>
                     <Setter Property="Foreground" Value="Black"/>
-                    <Setter Property="Height" Value="25"/>
-                    <Setter Property="Width" Value="85"/>
+                    <Setter Property="Height" Value="30"/>
+                    <Setter Property="Width" Value="90"/>
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="Button">
                                 <Border Background="LightGray" BorderBrush="Black" BorderThickness="2" Padding="5">
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-5,0,0" />
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-3,0,0" />
                                 </Border>
                             </ControlTemplate>
                         </Setter.Value>
