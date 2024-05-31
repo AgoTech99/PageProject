@@ -80,5 +80,19 @@ namespace PageProject.View
                 }
             }
         }
+        private void Pin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (!(e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9 || e.Key >= Key.D0 && e.Key <= Key.D9 || e.Key == Key.Left || e.Key == Key.Right || e.Key == Key.Back || e.Key == Key.Enter))
+                e.Handled = true;
+            else
+            {
+                if (e.Key.Equals(Key.Enter))
+                {
+                    if (sender is TextBox textBox) ;
+
+                        
+                }
+            }
+        }
     }
 }

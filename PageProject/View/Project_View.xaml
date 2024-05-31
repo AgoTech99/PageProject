@@ -26,7 +26,7 @@
 <!--_________________________ROUTER__________________________-->
         
             <Grid>
-                <ScrollViewer HorizontalScrollBarVisibility="Hidden"  VerticalScrollBarVisibility="Disabled" >
+                <ScrollViewer x:Name="Scroll" HorizontalScrollBarVisibility="Hidden"  VerticalScrollBarVisibility="Disabled" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel" >
                 <ItemsControl ItemsSource="{Binding Routers}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -37,44 +37,44 @@
                         <DataTemplate>
                                 <Border BorderBrush="Black" BorderThickness="4" CornerRadius="30" Margin="4,6">
                                     <StackPanel >
-                                    
                                         <TextBlock Text="{Binding Path=Name}" FontSize="22" HorizontalAlignment="Center" />
-                                <Image Source="C:\stage-Federico\PageProject\PageProject\Images\router.png"  
-                                       Width="{Binding ActualWidth, RelativeSource={RelativeSource  Mode=FindAncestor, AncestorType=Grid},Converter={StaticResource SizeConverter}, ConverterParameter=6.2}"
-                                       Height="{Binding ActualHeight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Grid},Converter={StaticResource SizeConverter}, ConverterParameter=2.7}"  Margin="20,0" />
-                                <ItemsControl ItemsSource="{Binding Pin}">
-                                    <ItemsControl.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <WrapPanel/>
-                                        </ItemsPanelTemplate>
-                                    </ItemsControl.ItemsPanel>
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-                                            <StackPanel >
-                                                <Image Source="C:\stage-Federico\PageProject\PageProject\Images\pin.png" 
+                                        <Image Source="C:\stage-Federico\PageProject\PageProject\Images\router.png"  
+                                            Width="{Binding ActualWidth, RelativeSource={RelativeSource  Mode=FindAncestor, AncestorType=Grid},Converter={StaticResource SizeConverter}, ConverterParameter=6.2}"
+                                            Height="{Binding ActualHeight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Grid},Converter={StaticResource SizeConverter}, ConverterParameter=2.7}"  Margin="20,0" />
+                                        
+                                            <ItemsControl ItemsSource="{Binding Pin}">
+                                                <ItemsControl.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <WrapPanel/>
+                                                    </ItemsPanelTemplate>
+                                                </ItemsControl.ItemsPanel>
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <StackPanel >
+                                                            <Image Source="\Images\pin.png" 
                                                        Width="{Binding ActualWidth, RelativeSource={RelativeSource  Mode=FindAncestor, AncestorType=Grid},Converter={StaticResource SizeConverter}, ConverterParameter=40.2}"
                                                        Height="{Binding ActualHeight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Grid},Converter={StaticResource SizeConverter}, ConverterParameter=2.7}"/>
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ItemsControl>
-                                
-                            </StackPanel>
+                                                        </StackPanel>
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+
+                                    </StackPanel>
                                 </Border>
                             </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
                 </ScrollViewer>
             </Grid >
-        
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
 
-<!--________________________RESISTANCE_SENSOR________________-->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <!--________________________RESISTANCE_SENSOR________________-->
             <Border BorderBrush="Black" BorderThickness="4" Grid.Row="1" Grid.Column="1" CornerRadius="20">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -104,10 +104,10 @@
                     </Grid.RowDefinitions>
                     <TextBlock Text="MICROWAVE PROBE" VerticalAlignment="Center" HorizontalAlignment="Center"  FontWeight="Bold" FontSize="19"/>
                     <Grid Grid.Row="1">
-                    <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,0" PreviewKeyDown="TextBox_PreviewKeyDown" PreviewKeyUp="TextBox_PreviewKeyUp" FontSize="23"
-                   
-                           />
-                </Grid>
+                            <Border CornerRadius="20" Background="#0c6861">
+                                <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,0" PreviewKeyDown="TextBox_PreviewKeyDown" PreviewKeyUp="TextBox_PreviewKeyUp" FontSize="23" Style="{StaticResource TextBox_Microwave}" TextChanged="TextBox_TextChanged"/>
+                            </Border>
+                        </Grid>
             </Grid>
             </Border>
             
@@ -126,12 +126,27 @@
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="1" Text="SCALE" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="27"/>
                         <Rectangle Fill="Black" Grid.Column="2" RadiusX="20" RadiusY="20" />
-                    <Button Content="+" FontSize="35" Grid.Column="2" HorizontalAlignment="Right" Margin="9,0,6,5" Background="Transparent" Foreground="White" Height="auto" BorderBrush="Transparent" Click="Button_plus" />
-                            <Border Grid.Column="2" CornerRadius="20" Background="#0c6861" Width="30" Height="30" >
+                            <Menu Grid.Column="2" Style="{StaticResource Menu}" VerticalAlignment="Center" >
+                                <MenuItem Margin="3,3,3,0" Style="{StaticResource MenuItem}">
+                                    <MenuItem.Icon >
+                                        <Image Source="/Images/plus.png"/>
+                                    </MenuItem.Icon>
+                                    <MenuItem Header="Aggregati" Click="Button_plus" />
+                                    <MenuItem Header="Cementi" Click="Button_plus"/>
+                                    <MenuItem Header="Acqua" Click="Button_plus"/>
+                                    <MenuItem Header="Additivi" Click="Button_plus"/>
+                                    <MenuItem Header="Fibre" Click="Button_plus"/>
+                                    <MenuItem Header="Ghiaccio" Click="Button_plus"/>
+                                </MenuItem>
+                            </Menu >
+                            <!--<Button Content="+" FontSize="35" Grid.Column="2" HorizontalAlignment="Right" Margin="9,0,6,5" Background="Transparent" Foreground="White" Height="auto" BorderBrush="Transparent" Click="Button_plus" />-->
+                            <Border Grid.Column="2" CornerRadius="20" Background="#0c6861" Width="30" Height="30" VerticalAlignment="Center" >
                     <TextBlock Text="{Binding Path=Count_Scale,UpdateSourceTrigger=PropertyChanged}" Foreground="White"  HorizontalAlignment="Center" VerticalAlignment="Center" />
                     </Border>
-                    <Button Content="-" FontSize="35" Grid.Column="2" HorizontalAlignment="Left" Margin="9,0,6,5" Background="Transparent" Foreground="White" Height="auto" BorderBrush="Transparent" Click="Button_minus"  />
-                </Grid>
+                            <Button  Grid.Column="2" Style="{StaticResource Button_Minus}" Click="Button_minus">
+                                <Image Source="\Images\minus.png" Width="15"/>
+                            </Button>
+                        </Grid>
                     <Grid Grid.Row="1">
                         <ScrollViewer VerticalScrollBarVisibility="Hidden">
                         <ItemsControl ItemsSource="{Binding Scales}">
@@ -144,11 +159,17 @@
                                 <DataTemplate>
 
                                     <StackPanel >
-                                        <Image 
-                                            Source="C:\stage-Federico\PageProject\PageProject\Images\scale.png" 
-                                            Width="{Binding ActualWidth, RelativeSource={RelativeSource  Mode=FindAncestor, AncestorType=Grid},Converter={StaticResource SizeConverter}, ConverterParameter=6.2}" Margin="10" 
-                                            Height="{Binding ActualHeight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Grid},Converter={StaticResource SizeConverter}, ConverterParameter=3.7}"                                               
+                                            <Border Background="{Binding Path=RectangleFill}"  
+                                                Width="{Binding ActualWidth, RelativeSource={RelativeSource  Mode=FindAncestor, AncestorType=Grid},Converter={StaticResource SizeConverter}, ConverterParameter=5.2}" 
+                                                Height="{Binding ActualWidth, RelativeSource={RelativeSource  Mode=FindAncestor, AncestorType=Grid},Converter={StaticResource SizeConverter}, ConverterParameter=5.7}" CornerRadius="20"
+                                                Margin="20,0,0,0"
+                                                >
+                                                    <Image 
+                                                Source="\Images\scale.png" 
+                                                Width="{Binding ActualWidth, RelativeSource={RelativeSource  Mode=FindAncestor, AncestorType=Grid},Converter={StaticResource SizeConverter}, ConverterParameter=6.2}" Margin="10" 
+                                                Height="{Binding ActualHeight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Grid},Converter={StaticResource SizeConverter}, ConverterParameter=3.7}"                                               
                                             />
+                                        </Border>
                                     </StackPanel>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
@@ -166,12 +187,8 @@
                         <ColumnDefinition Width="4*"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Button Grid.Column="1" Content="Save" FontSize="22" Width="100" Height="50" HorizontalAlignment="Right">
-                        <Button.Resources>
-                            <Style TargetType="Border">
-                                <Setter Property="CornerRadius" Value="20"/>
-                            </Style>
-                        </Button.Resources>
+                    <Button Grid.Column="1" Content="Save"  Style="{StaticResource Button_Save}">
+                       
                     </Button>
                     <TextBlock Text="" HorizontalAlignment="Right" VerticalAlignment="Center"/>
                 </Grid>

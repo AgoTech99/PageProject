@@ -19,15 +19,18 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
+                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0" Text="SCALE" VerticalAlignment="Center" HorizontalAlignment="Center"  FontWeight="Bold" FontSize="19"/>
                 <TextBox Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20" PreviewKeyDown="Scale_KeyDown"/>
-                <TextBlock Grid.Column="1" Text="RESISTIVE PROBE" VerticalAlignment="Center" HorizontalAlignment="Center"  FontWeight="Bold" FontSize="19"/>
+                <TextBlock Grid.Column="1" Text="RESISTIVE PROBE" VerticalAlignment="Center" HorizontalAlignment="Center"  FontWeight="Bold" FontSize="15"/>
                 <TextBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20" PreviewKeyDown="Resistive_KeyDown"/>
-                <TextBlock Grid.Column="2" Text="MICROWAVE PROBE" VerticalAlignment="Center" HorizontalAlignment="Center"  FontWeight="Bold" FontSize="17"/>
+                <TextBlock Grid.Column="2" Text="MICROWAVE PROBE" VerticalAlignment="Center" HorizontalAlignment="Center"  FontWeight="Bold" FontSize="13"/>
                 <TextBox Grid.Column="2" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20" PreviewKeyDown="Microwave_KeyDown"/>
                 <TextBlock Grid.Column="3" Text="MULTISERIAL" VerticalAlignment="Center" HorizontalAlignment="Center"  FontWeight="Bold" FontSize="19"/>
                 <TextBox Grid.Column="3" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20" PreviewKeyDown="Multiserial_KeyDown"/>
+                <TextBlock Grid.Column="4" Text="N_PIN" VerticalAlignment="Center" HorizontalAlignment="Center"  FontWeight="Bold" FontSize="19"/>
+                <TextBox Grid.Column="4" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20" PreviewKeyDown="Pin_KeyDown"/>
             </Grid>
         </Border>
     </Grid>

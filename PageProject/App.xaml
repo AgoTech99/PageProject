@@ -4,6 +4,12 @@
              xmlns:local="clr-namespace:PageProject"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="C:\progetti\Progetto3\PageProject\Styles\StyleButton.xaml"/>
+                <ResourceDictionary Source="C:\progetti\Progetto3\PageProject\Styles\StyleTextbox.xaml"/>
+                <ResourceDictionary Source="C:\progetti\Progetto3\PageProject\Styles\StyleMenu.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

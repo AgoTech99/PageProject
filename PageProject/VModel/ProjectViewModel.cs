@@ -1,4 +1,5 @@
-﻿using PageProject.Model;
+﻿using PageProject.Converter;
+using PageProject.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -86,6 +87,7 @@ namespace PageProject.VModel
         }
 
         
+        
 
         private int n_microwaveprobe = 11;
         public int N_MicrowaveProbe
@@ -105,11 +107,13 @@ namespace PageProject.VModel
         }
         public ProjectViewModel()
         {
+            
             Routers = new ObservableCollection<Router>();
             Scales = new ObservableCollection<Bilancia>();
             SondaaMicroonde = new SondaaMicroonde();
             SondaResistiva = new SondaResistiva();
             sonde = SondaResistiva.Sonde;
+           
 
         }
         public void Change_N_Resistive(int n_resistive)
@@ -127,9 +131,8 @@ namespace PageProject.VModel
             }
         }
 
-
         
-        public void Change_scale(string sign)
+        public void Change_scale(string sign,SolidColorBrush colore)
         {
             if (sign == "-")
             {
@@ -146,7 +149,7 @@ namespace PageProject.VModel
             {
                 if (scales.Count() < N_Scale)
                 {
-                    scales.Add(new Bilancia($"Bilancia{scales.Count() + 1}"));
+                    scales.Add(new Bilancia($"Bilancia{scales.Count() + 1}", colore));
                     count_scale += 1;
                     check_router_plus(1);
                     OnPropertyChanged(nameof(count_scale));
@@ -174,6 +177,11 @@ namespace PageProject.VModel
                         check_router_minus(value * -1);
                     Value_textBox = Convert.ToInt32(textBox.Text);
                 }
+            }
+            else
+            {
+                check_router_minus(Value_textBox);
+                Value_textBox = 0;
             }
 
         }
@@ -214,7 +222,7 @@ namespace PageProject.VModel
         }
         public void check_router_minus(int Device)
         {
-            if (routers.Count != 0)
+           if (routers.Count != 0)
             {
                 for (int i = 0;i<Device;i++)
                 {
@@ -231,5 +239,6 @@ namespace PageProject.VModel
             }
                 
         }
+
     }
 }

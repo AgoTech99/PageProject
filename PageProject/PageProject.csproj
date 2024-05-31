@@ -10,7 +10,39 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Images\" />
+    <None Remove="Images\add.png" />
+    <None Remove="Images\pin.png" />
+    <None Remove="Images\plus.png" />
+    <None Remove="Images\router.png" />
+    <None Remove="Images\scale.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="Styles\StyleButton.xaml" />
+    <Page Remove="Styles\StyleTextbox.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\add.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\pin.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\plus.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\router.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\scale.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Styles\StyleButton.xaml" />
+    <Resource Include="Styles\StyleTextbox.xaml" />
   </ItemGroup>
 
 </Project>

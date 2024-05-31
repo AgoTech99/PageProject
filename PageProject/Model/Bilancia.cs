@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace PageProject.Model
 {
@@ -20,9 +21,23 @@ namespace PageProject.Model
                 name = value;
             }
         }
-        public Bilancia(string Nome) 
+        public Bilancia(string Nome,SolidColorBrush color) 
         { 
             name = Nome;
+            rectangleFill = color;
+        }
+
+        private SolidColorBrush rectangleFill;
+        public SolidColorBrush RectangleFill
+        {
+            get
+            {
+                return rectangleFill;
+            }
+            set
+            {
+                rectangleFill = value;                
+            }
         }
 
 
