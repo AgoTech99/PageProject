@@ -11,7 +11,19 @@
         Width="1920"
         Height="1080"
         >
-    
+
+    <Window.Resources>
+        <ContextMenu x:Key="MyContextMenu">
+            <MenuItem Header="Aggregates" Click="ItemClicked" />
+            <MenuItem Header="Cements" Click="ItemClicked" />
+            <MenuItem Header="Water" Click="ItemClicked" />
+            <MenuItem Header="Additives" Click="ItemClicked" />
+            <MenuItem Header="Fibres" Click="ItemClicked" />
+            <MenuItem Header="Ice" Click="ItemClicked" />
+        </ContextMenu>
+    </Window.Resources>
+
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*" />
@@ -41,7 +53,7 @@
                     </Grid.RowDefinitions>
                     <TextBlock Margin="20" Text="MultiSerials" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center"/>
 
-                    <ScrollViewer x:Name="MultiserialScrollViewer" Grid.Row="1" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden" PanningMode="HorizontalOnly" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
+                    <ScrollViewer x:Name="MultiserialScrollViewer" Grid.Row="1" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden"  PanningMode="HorizontalOnly" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
                         <ItemsControl  ItemsSource="{Binding Path=MultiserialModelsList}" >
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
@@ -119,25 +131,28 @@
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Button Click="Button_Plus_Click" Margin="20,0,0,0" MinHeight="50" MinWidth="50" MaxHeight="50" MaxWidth="50" >
+
+                    <Button Width="50" Height="50" Margin="20,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"
+                            Content="+" 
+                            Background="LightGray"
+                            Foreground="Black"
+                            FontWeight="Heavy"
+                            FontSize="25"
+                            BorderThickness="0"
+                            Click="Button_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}"
+                                    CornerRadius="50" BorderThickness="2" BorderBrush="black">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-5,0,0"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="50"/>
                             </Style>
                             <Style TargetType="Button">
-                                <Setter Property="Content" Value="+" />
-                                <Setter Property="FontSize" Value="25" />
-                                <Setter Property="FontWeight" Value="Heavy"/>
-                                <Setter Property="Foreground" Value="Black"/>
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="Button">
-                                            <Border Background="LightGray" BorderBrush="Black" BorderThickness="2" >
-                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-7,0,0" />
-                                            </Border>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
                                 <Style.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
                                         <Setter Property="Foreground" Value="Gray"/>
@@ -146,13 +161,8 @@
                             </Style>
                         </Button.Resources>
                     </Button>
-
-                    <Menu Margin="50,0,0,0" Height="50">
-                        <MenuItem Header="+ ˅" FontSize="50" Margin="0,-10,0,0">
-                            
-                        </MenuItem>
-                    </Menu>
                     
+
                 </StackPanel>
 
                 <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden">
@@ -164,7 +174,7 @@
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Border CornerRadius="20" Margin="20" BorderThickness="2" Background="LightGray" BorderBrush="Black" Padding="20,15,20,15" Width="199">
+                                <Border CornerRadius="20" Margin="20" BorderThickness="2" Background="{Binding Path=Color}" BorderBrush="Black" Padding="20,15,20,15" Width="199">
                                     <TextBlock FontSize="30" FontWeight="Bold" HorizontalAlignment="Center" Text="{Binding Path=Name}"></TextBlock>
                                 </Border>
                             </DataTemplate>

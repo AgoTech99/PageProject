@@ -208,12 +208,12 @@ namespace PageProject.ViewModels
             }
         }
 
-        public void AddScale()
+        public void AddScale(SolidColorBrush color)
         {
             if (ScaleModelsList.Count < MaxScalesNumber)
             {
                 PortCount++;
-                ScaleModelsList.Add(new ScaleModel(ScaleModelsList.Count() + 1));
+                ScaleModelsList.Add(new ScaleModel(ScaleModelsList.Count() + 1, color));
                 OnPropertyChanged(nameof(ScaleModelsList));
                 Status = "";
             }

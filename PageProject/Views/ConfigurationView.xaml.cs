@@ -1,5 +1,7 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using PageProject.Models;
 using PageProject.ViewModels;
 
@@ -8,6 +10,16 @@ namespace PageProject.Views
     public partial class ConfigurationView : Window
     {
         private readonly ConfigurationViewModel _confVM;
+
+        private Dictionary<string, SolidColorBrush> colors = new Dictionary<string, SolidColorBrush>()
+        {
+            {"Aggregates",Brushes.Yellow },
+            {"Cements",Brushes.Green },
+            {"Water",Brushes.LightBlue },
+            {"Additives",Brushes.Purple },
+            {"Fibres",Brushes.LightSeaGreen },
+            {"Ice",Brushes.White }
+        };
 
         public ConfigurationView(ConfigurationViewModel CVM)
         {
@@ -22,11 +34,6 @@ namespace PageProject.Views
         public void WindowClosed(object? sender, EventArgs e) 
         {
             this.Owner.Show();
-        }
-
-        private void Button_Plus_Click(object sender, RoutedEventArgs e)
-        {
-            _confVM.AddScale();
         }
 
         private void Button_Minus_Click(object sender, RoutedEventArgs e)
@@ -75,38 +82,31 @@ namespace PageProject.Views
             e.Handled = true;
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            if (button != null)
+            {
+                var contextMenu = this.Resources["MyContextMenu"] as ContextMenu;
+                if (contextMenu != null)
+                {
+                    contextMenu.PlacementTarget = button;
+                    contextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
+                    contextMenu.IsOpen = true;
+                }
+            }
+        }
 
-        //private void AddButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    MessageBox.Show("Add button clicked");
-        //}
 
-        //private void Option1_Click(object sender, RoutedEventArgs e)
-        //{
-        //    MessageBox.Show("Option 1 selected");
-        //}
+        private void ItemClicked(object sender, RoutedEventArgs e)
+        {
+            var menuItem = sender as MenuItem;
+            if (menuItem != null)
+            {
+                _confVM.AddScale(colors[menuItem.Header.ToString()]);
+            }
+        }
 
-        //private void Option2_Click(object sender, RoutedEventArgs e)
-        //{
-        //    MessageBox.Show("Option 2 selected");
-        //}
 
-        //private void Option3_Click(object sender, RoutedEventArgs e)
-        //{
-        //    MessageBox.Show("Option 3 selected");
-        //}
-
-        //private void DropDownToggleButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    if (DropDownToggleButton.IsChecked == true)
-        //    {
-        //        DropDownContextMenu.PlacementTarget = DropDownToggleButton;
-        //        DropDownContextMenu.IsOpen = true;
-        //    }
-        //    else
-        //    {
-        //        DropDownContextMenu.IsOpen = false;
-        //    }
-        //}
     }
 }
