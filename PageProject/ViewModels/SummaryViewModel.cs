@@ -16,6 +16,5 @@ namespace PageProject.ViewModels
         {
             SummaryModel = SM;   
         }
-
     }
 }

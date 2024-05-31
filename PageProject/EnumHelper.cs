@@ -1,5 +1,4 @@
-﻿
-namespace PageProject
+﻿namespace PageProject
 {
     public class EnumHelper
     {

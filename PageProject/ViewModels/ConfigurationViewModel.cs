@@ -24,10 +24,13 @@ namespace PageProject.ViewModels
         private ResistiveEnum comboSelectedType;
         private int previousComboSelectedNumber;
         private int previousTextBoxNumber;
+        private int maxMultiserialNumber;
+        private int maxMultiserialPorts;
+        private int maxScalesNumber;
+        private int maxMicrowaveNumber;
 
         private bool isTypeSelected;
         private bool isTextInputOk = true;
-
 
 
         public ObservableCollection<MultiserialModel> MultiserialModelsList
@@ -139,12 +142,6 @@ namespace PageProject.ViewModels
                 TextBoxChanged();
             }
         }
-
-
-        private int maxMultiserialNumber;
-        private int maxMultiserialPorts;
-        private int maxScalesNumber;
-        private int maxMicrowaveNumber;
         
         public int MaxMultiserialNumber
         {
@@ -314,15 +311,10 @@ namespace PageProject.ViewModels
         }
 
 
-
-
-
-
         protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
         public event PropertyChangedEventHandler? PropertyChanged;
     }
 }

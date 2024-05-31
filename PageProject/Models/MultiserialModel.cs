@@ -1,5 +1,4 @@
-﻿
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 
 namespace PageProject.Models
 {
@@ -7,8 +6,8 @@ namespace PageProject.Models
     {
         private int activePort;
         private string portName = "MultiSerial-";
-
         private ObservableCollection<int> portsList;
+        private static int width;
 
         public int ActivePort
         {
@@ -37,7 +36,6 @@ namespace PageProject.Models
             set { portsList = value; }
         }
 
-        private static int width;
         public static int Width { get => width; set => width = value; }
 
         public MultiserialModel(int number, int ports = 0)

@@ -1,19 +1,8 @@
-﻿
-
-namespace PageProject.ViewModels
+﻿namespace PageProject.ViewModels
 {
     public class ConstantsViewModel
     {
         private Dictionary<string, int> properties;
-
-        public Dictionary<string, int> Properties
-        { 
-            get { return properties; }
-            set { properties = value; }
-        }
-
-
-
         private string maxMultiserialNumber;
         private string maxMultiserialPortNumber;
         private string maxScalesNumber;
@@ -21,6 +10,11 @@ namespace PageProject.ViewModels
         private string maxMicrowaveNumber;
 
 
+        public Dictionary<string, int> Properties
+        { 
+            get { return properties; }
+            set { properties = value; }
+        }
 
         public string MaxMultiserialNumber
         {
@@ -102,11 +96,6 @@ namespace PageProject.ViewModels
             }
         }
 
-
-
-
-
-
         public bool Check()
         {
             int MN = int.Parse(MaxMultiserialNumber);
@@ -114,7 +103,6 @@ namespace PageProject.ViewModels
             int SN = int.Parse(MaxScalesNumber);
             int RN = int.Parse(MaxResistiveNumber);
             int MWN = int.Parse(MaxMicrowaveNumber);
-            
             if (MN * MPN >= SN + RN + MWN)
             {
                 Properties["MaxMultiserialNumber"] = MN;
@@ -130,13 +118,11 @@ namespace PageProject.ViewModels
         public ConstantsViewModel(Dictionary<string, int> Properties) 
         {
             this.Properties = Properties;
-
             MaxMultiserialNumber = Properties["MaxMultiserialNumber"].ToString();
             MaxMultiserialPortNumber = Properties["MaxMultiserialPortNumber"].ToString();
             MaxScalesNumber = Properties["MaxScaleNumber"].ToString();
             MaxResistiveNumber = Properties["MaxResistiveNumber"].ToString();
             MaxMicrowaveNumber = Properties["MaxMicrowaveNumber"].ToString();
         }
-
     }
 }

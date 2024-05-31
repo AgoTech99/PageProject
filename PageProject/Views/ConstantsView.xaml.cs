@@ -7,14 +7,11 @@ namespace PageProject.Views
     public partial class ConstantsView : Window
     {
         private ConstantsViewModel constantViewModel;
-
-
         public ConstantsViewModel ConstantViewModel
         {
             get { return constantViewModel; }
             set { constantViewModel = value; }
         }
-
 
         public ConstantsView(ConstantsViewModel CVM)
         {

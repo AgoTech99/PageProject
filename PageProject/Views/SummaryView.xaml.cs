@@ -6,7 +6,6 @@ namespace PageProject.Views
     public partial class SummaryView : Window
     {
         private SummaryViewModel summaryViewModel;
-
         public SummaryViewModel SummaryViewModel
         {
             get { return summaryViewModel; } 

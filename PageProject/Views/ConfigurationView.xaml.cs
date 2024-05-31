@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using PageProject.Models;
 using PageProject.ViewModels;
@@ -17,7 +16,6 @@ namespace PageProject.Views
             this.WindowState = WindowState.Maximized;
             this.Closed += WindowClosed;
             InitializeComponent();
-
             MultiserialScrollViewer.PreviewMouseWheel += ScrollViewer_PreviewMouseWheel;
         }
 
@@ -76,5 +74,39 @@ namespace PageProject.Views
             }
             e.Handled = true;
         }
+
+
+        //private void AddButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    MessageBox.Show("Add button clicked");
+        //}
+
+        //private void Option1_Click(object sender, RoutedEventArgs e)
+        //{
+        //    MessageBox.Show("Option 1 selected");
+        //}
+
+        //private void Option2_Click(object sender, RoutedEventArgs e)
+        //{
+        //    MessageBox.Show("Option 2 selected");
+        //}
+
+        //private void Option3_Click(object sender, RoutedEventArgs e)
+        //{
+        //    MessageBox.Show("Option 3 selected");
+        //}
+
+        //private void DropDownToggleButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    if (DropDownToggleButton.IsChecked == true)
+        //    {
+        //        DropDownContextMenu.PlacementTarget = DropDownToggleButton;
+        //        DropDownContextMenu.IsOpen = true;
+        //    }
+        //    else
+        //    {
+        //        DropDownContextMenu.IsOpen = false;
+        //    }
+        //}
     }
 }

@@ -10,7 +10,6 @@ namespace PageProject.Models
         private int resistiveProbesType;
         private int microwaveProbesNumber;
 
-
         public ObservableCollection<MultiserialModel> MultiserialsList
         {
             get { return multiserialsList; }
@@ -40,7 +39,6 @@ namespace PageProject.Models
             get { return microwaveProbesNumber; }
             set { microwaveProbesNumber = value; }
         }
-
 
         public string MultiserialDescription
         {
