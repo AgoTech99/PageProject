@@ -8,11 +8,16 @@ namespace PageProject
 {
     public partial class MainWindow : Window
     {
-        public MainWindow()
-        {
+        private Dictionary<string, int> properties;
 
-            InitializeComponent();
+        public Dictionary<string, int> Properties
+        {
+            get { return properties; }
+            set { properties = value; }
         }
+
+
+
 
         private ConfigurationView configurationView;
         private ConfigurationViewModel configurationViewModel;
@@ -20,15 +25,32 @@ namespace PageProject
         private ConstantsViewModel constantsViewModel;
         private ConstantsView constantsView;
 
-        private ObservableCollection<ScaleModel> scaleModelsList = [];
-        private ObservableCollection<MultiserialModel> multiserialModelsList = [];
-        private ResistiveModel resistiveModel = new();
-        private MicrowaveModel microwaveModel = new();
+
+        private ObservableCollection<ScaleModel> scaleModelsList;
+        private ObservableCollection<MultiserialModel> multiserialModelsList;
+        private MicrowaveModel microwaveModel;
+
+
+
+
+        public MainWindow()
+        {
+            Properties = new()
+            {
+                {"MaxMultiserialNumber", 5},
+                {"MaxMultiserialPortNumber", 8},
+                {"MaxScaleNumber", 16},
+                {"MaxResistiveNumber", 9},
+                {"MaxMicrowaveNumber", 15}
+            };
+
+            InitializeComponent();
+        }
 
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            configurationViewModel = new(multiserialModelsList, scaleModelsList, resistiveModel, microwaveModel);
+            configurationViewModel = new([], [], new(), Properties);
 
             configurationView = new ConfigurationView(configurationViewModel)
             {
@@ -40,7 +62,7 @@ namespace PageProject
 
         private void Button_Constant_Click(object sender, RoutedEventArgs e)
         {
-            constantsViewModel = new();
+            constantsViewModel = new(Properties);
 
             constantsView = new(constantsViewModel)
             {

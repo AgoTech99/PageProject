@@ -35,7 +35,8 @@ namespace PageProject.Views
         {
             if (ConstantViewModel.Check())
             {
-
+                this.Close();
+                this.Owner.Show();
             }
         }
     }

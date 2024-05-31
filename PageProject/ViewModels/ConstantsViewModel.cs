@@ -4,17 +4,22 @@ namespace PageProject.ViewModels
 {
     public class ConstantsViewModel
     {
-        private string maxMultiserialNumber = "5";
-        private string maxMultiserialPortNumber = "8";
-        private string maxScalesNumber = "16";
-        private string maxResistiveNumber = "9";
-        private string maxMicrowaveNumber = "15";
+        private Dictionary<string, int> properties;
 
-        private bool multiserialNumberOk = true;
-        private bool multiserialPortNumberOk = true;
-        private bool scalesNumberOk = true;
-        private bool resistiveNumberOk = true;
-        private bool microwaveNumberOk = true;
+        public Dictionary<string, int> Properties
+        { 
+            get { return properties; }
+            set { properties = value; }
+        }
+
+
+
+        private string maxMultiserialNumber;
+        private string maxMultiserialPortNumber;
+        private string maxScalesNumber;
+        private string maxResistiveNumber;
+        private string maxMicrowaveNumber;
+
 
 
         public string MaxMultiserialNumber
@@ -24,13 +29,12 @@ namespace PageProject.ViewModels
             { 
                 if(value != "")
                 {
-                    multiserialNumberOk = true;
+                    maxMultiserialNumber = value;
                 }
                 else
                 {
-                    multiserialNumberOk = false;
-                }
-                maxMultiserialNumber = value; 
+                    maxMultiserialNumber = "0";
+                }                
             }
         }
 
@@ -41,13 +45,12 @@ namespace PageProject.ViewModels
             {
                 if (value != "")
                 {
-                    multiserialPortNumberOk = true;
+                    maxMultiserialPortNumber = value;
                 }
                 else
                 {
-                    multiserialPortNumberOk = false;
+                    maxMultiserialPortNumber = "0";
                 }
-                maxMultiserialPortNumber = value;
             }
         }
 
@@ -58,13 +61,12 @@ namespace PageProject.ViewModels
             {
                 if (value != "")
                 {
-                    scalesNumberOk = true;
+                    maxScalesNumber = value;
                 }
                 else
                 {
-                    scalesNumberOk = false;
+                    maxScalesNumber = "0";
                 }
-                maxScalesNumber = value;
             }
         }
 
@@ -75,13 +77,12 @@ namespace PageProject.ViewModels
             {
                 if (value != "")
                 {
-                    resistiveNumberOk = true;
+                    maxResistiveNumber = value;
                 }
                 else
                 {
-                    resistiveNumberOk = false;
+                    maxResistiveNumber = "0";
                 }
-                maxResistiveNumber = value;
             }
         }
 
@@ -92,29 +93,49 @@ namespace PageProject.ViewModels
             {
                 if (value != "")
                 {
-                    microwaveNumberOk = true;
+                    maxMicrowaveNumber = value;
                 }
                 else
                 {
-                    microwaveNumberOk = false;
+                    maxMicrowaveNumber = "0";
                 }
-                maxMicrowaveNumber = value;
             }
         }
+
+
+
+
 
 
         public bool Check()
         {
-            if (multiserialNumberOk && multiserialPortNumberOk && scalesNumberOk && resistiveNumberOk && microwaveNumberOk)
-            {  
-                System.Diagnostics.Debug.WriteLine("ciao");
+            int MN = int.Parse(MaxMultiserialNumber);
+            int MPN = int.Parse(MaxMultiserialPortNumber);
+            int SN = int.Parse(MaxScalesNumber);
+            int RN = int.Parse(MaxResistiveNumber);
+            int MWN = int.Parse(MaxMicrowaveNumber);
+            
+            if (MN * MPN >= SN + RN + MWN)
+            {
+                Properties["MaxMultiserialNumber"] = MN;
+                Properties["MaxMultiserialPortNumber"] = MPN;
+                Properties["MaxScaleNumber"] = SN;
+                Properties["MaxResistiveNumber"] = RN;
+                Properties["MaxMicrowaveNumber"] = MWN;
+                return true;
             }
             return false;
         }
 
-        public ConstantsViewModel() 
+        public ConstantsViewModel(Dictionary<string, int> Properties) 
         {
-        
+            this.Properties = Properties;
+
+            MaxMultiserialNumber = Properties["MaxMultiserialNumber"].ToString();
+            MaxMultiserialPortNumber = Properties["MaxMultiserialPortNumber"].ToString();
+            MaxScalesNumber = Properties["MaxScaleNumber"].ToString();
+            MaxResistiveNumber = Properties["MaxResistiveNumber"].ToString();
+            MaxMicrowaveNumber = Properties["MaxMicrowaveNumber"].ToString();
         }
 
     }

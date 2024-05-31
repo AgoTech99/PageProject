@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using PageProject.Models;
 using PageProject.ViewModels;
@@ -16,6 +17,8 @@ namespace PageProject.Views
             this.WindowState = WindowState.Maximized;
             this.Closed += WindowClosed;
             InitializeComponent();
+
+            MultiserialScrollViewer.PreviewMouseWheel += ScrollViewer_PreviewMouseWheel;
         }
 
         public void WindowClosed(object? sender, EventArgs e) 
@@ -59,6 +62,19 @@ namespace PageProject.Views
             {
                 e.Handled = true;
             }
+        }
+
+        private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            if (e.Delta < 0)
+            {
+                MultiserialScrollViewer.LineRight();
+            }
+            else if (e.Delta > 0)
+            {
+                MultiserialScrollViewer.LineLeft();
+            }
+            e.Handled = true;
         }
     }
 }

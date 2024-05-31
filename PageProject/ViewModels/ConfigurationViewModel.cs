@@ -141,11 +141,36 @@ namespace PageProject.ViewModels
         }
 
 
-        private int MaxScalesNumber { get; set; }
-        private int MaxMicrowavesNumber { get; set; }
-
+        private int maxMultiserialNumber;
         private int maxMultiserialPorts;
-        private int MaxMultiserialPorts
+        private int maxScalesNumber;
+        private int maxMicrowaveNumber;
+        
+        public int MaxMultiserialNumber
+        {
+            get => maxMultiserialNumber;
+            set => maxMultiserialNumber = value;
+        }
+
+        public int MaxScalesNumber 
+        {
+            get { return maxScalesNumber; }
+            set
+            {
+                maxScalesNumber = value;
+            }
+        }
+
+        public int MaxMicrowavesNumber
+        {
+            get { return maxMicrowaveNumber; }
+            set
+            {
+                maxMicrowaveNumber = value;
+            }
+        }
+
+        public int MaxMultiserialPorts
         {
             get { return maxMultiserialPorts; }
             set
@@ -157,13 +182,17 @@ namespace PageProject.ViewModels
 
 
 
-        public ConfigurationViewModel(ObservableCollection<MultiserialModel> MSMList, ObservableCollection<ScaleModel> SMList, ResistiveModel RM, MicrowaveModel MM) 
+        public ConfigurationViewModel(ObservableCollection<MultiserialModel> MSMList, ObservableCollection<ScaleModel> SMList, MicrowaveModel MM, Dictionary<string,int> Properties) 
         {
             MultiserialModelsList = MSMList;
             ScaleModelsList = SMList;
             MicrowaveModel = MM;
-            ResistiveModel = RM;
-            
+            ResistiveModel = new ResistiveModel(Properties["MaxResistiveNumber"]);
+
+            MaxMultiserialNumber = Properties["MaxMultiserialNumber"];
+            MaxMultiserialPorts = Properties["MaxMultiserialPortNumber"];
+            MaxScalesNumber = Properties["MaxScaleNumber"];
+            MaxMicrowavesNumber = Properties["MaxMicrowaveNumber"];
         }
 
 

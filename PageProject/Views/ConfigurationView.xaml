@@ -31,39 +31,51 @@
 
         <Border Grid.Row="1" Grid.ColumnSpan="3" BorderBrush="Black" BorderThickness="1">
             <StackPanel>
-                <TextBlock Margin="20" Text="MultiSerials" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Margin="20" Text="MultiSerials" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center"/>
 
-                <ItemsControl ItemsSource="{Binding Path=MultiserialModelsList}" >
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <StackPanel Orientation="Horizontal"/>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Margin="103,0,0,0" ToolTip="{Binding Path=PortName}">
-                                <TextBlock FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Center" Text="{Binding Path=PortName}" />
-                                <TextBlock FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Center" Text="{Binding Path=ActiveNumberDescription}"/>
-                                <Border Height="80" Width="{Binding Path=Width}" BorderBrush="Black" BorderThickness="3" >
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" >
-                                        <ItemsControl ItemsSource="{Binding Path=PortsList}" >
-                                            <ItemsControl.ItemsPanel>
-                                                <ItemsPanelTemplate>
-                                                    <StackPanel Orientation="Horizontal"/>
-                                                </ItemsPanelTemplate>
-                                            </ItemsControl.ItemsPanel>
-                                            <ItemsControl.ItemTemplate>
-                                                <DataTemplate>
-                                                    <Rectangle Fill="Black" Height="30" Width="10" Margin="20,0,0,0" />
-                                                </DataTemplate>
-                                            </ItemsControl.ItemTemplate>
-                                        </ItemsControl>
+                    <ScrollViewer x:Name="MultiserialScrollViewer" Grid.Row="1" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden" PanningMode="HorizontalOnly" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
+                        <ItemsControl  ItemsSource="{Binding Path=MultiserialModelsList}" >
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Margin="103,0,0,0" ToolTip="{Binding Path=PortName}">
+                                        <TextBlock FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Center" Text="{Binding Path=PortName}" />
+                                        <TextBlock FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Center" Text="{Binding Path=ActiveNumberDescription}"/>
+                                        <Border Height="80" Width="{Binding Path=Width}" BorderBrush="Black" BorderThickness="3" >
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" >
+                                                <ItemsControl ItemsSource="{Binding Path=PortsList}" >
+                                                    <ItemsControl.ItemsPanel>
+                                                        <ItemsPanelTemplate>
+                                                            <StackPanel Orientation="Horizontal"/>
+                                                        </ItemsPanelTemplate>
+                                                    </ItemsControl.ItemsPanel>
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Rectangle Fill="Black" Height="30" Width="10" Margin="20,0,0,0" />
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+                                            </StackPanel>
+                                        </Border>
                                     </StackPanel>
-                                </Border>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                    
+                </Grid>
             </StackPanel>
         </Border>
 
