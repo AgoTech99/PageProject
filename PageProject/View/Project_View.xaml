@@ -38,7 +38,7 @@
                                 <Border BorderBrush="Black" BorderThickness="4" CornerRadius="30" Margin="4,6">
                                     <StackPanel >
                                         <TextBlock Text="{Binding Path=Name}" FontSize="22" HorizontalAlignment="Center" />
-                                        <Image Source="C:\stage-Federico\PageProject\PageProject\Images\router.png"  
+                                        <Image Source="\Images\router.png"  
                                             Width="{Binding ActualWidth, RelativeSource={RelativeSource  Mode=FindAncestor, AncestorType=Grid},Converter={StaticResource SizeConverter}, ConverterParameter=6.2}"
                                             Height="{Binding ActualHeight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Grid},Converter={StaticResource SizeConverter}, ConverterParameter=2.7}"  Margin="20,0" />
                                         
@@ -88,8 +88,8 @@
                             <ColumnDefinition />
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <ComboBox  HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="5,60" ItemsSource="{Binding Path=Sonde}" SelectionChanged="ComboBox_SelectionChanged" />
-                        <ComboBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="5,60" 
+                            <ComboBox  HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="5,60" ItemsSource="{Binding Path=Sonde}" SelectionChanged="ComboBox_SelectionChanged"/>
+                            <ComboBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="5,60" 
                                   ItemsSource="{Binding Path=SondaResistiva.ComunicationTypesCollection, Mode=OneWay}"/>
                     </Grid>
                 </Grid>
@@ -131,21 +131,22 @@
                                     <MenuItem.Icon >
                                         <Image Source="/Images/plus.png"/>
                                     </MenuItem.Icon>
-                                    <MenuItem Header="Aggregati" Click="Button_plus" />
-                                    <MenuItem Header="Cementi" Click="Button_plus"/>
-                                    <MenuItem Header="Acqua" Click="Button_plus"/>
-                                    <MenuItem Header="Additivi" Click="Button_plus"/>
-                                    <MenuItem Header="Fibre" Click="Button_plus"/>
-                                    <MenuItem Header="Ghiaccio" Click="Button_plus"/>
+                                    <MenuItem Header="Aggregati" Click="Button_plus" Style="{StaticResource Menuitem}"/>
+                                    <MenuItem Header="Cementi" Click="Button_plus" Style="{StaticResource Menuitem}"/>
+                                    <MenuItem Header="Acqua" Click="Button_plus" Style="{StaticResource Menuitem}"/>
+                                    <MenuItem Header="Additivi" Click="Button_plus" Style="{StaticResource Menuitem}"/>
+                                    <MenuItem Header="Fibre" Click="Button_plus" Style="{StaticResource Menuitem}"/>
+                                    <MenuItem Header="Ghiaccio" Click="Button_plus" Style="{StaticResource Menuitem}"/>
                                 </MenuItem>
                             </Menu >
-                            <!--<Button Content="+" FontSize="35" Grid.Column="2" HorizontalAlignment="Right" Margin="9,0,6,5" Background="Transparent" Foreground="White" Height="auto" BorderBrush="Transparent" Click="Button_plus" />-->
-                            <Border Grid.Column="2" CornerRadius="20" Background="#0c6861" Width="30" Height="30" VerticalAlignment="Center" >
-                    <TextBlock Text="{Binding Path=Count_Scale,UpdateSourceTrigger=PropertyChanged}" Foreground="White"  HorizontalAlignment="Center" VerticalAlignment="Center" />
-                    </Border>
                             <Button  Grid.Column="2" Style="{StaticResource Button_Minus}" Click="Button_minus">
                                 <Image Source="\Images\minus.png" Width="15"/>
                             </Button>
+                            <Border Grid.Column="2" CornerRadius="20" Background="#0c6861" Width="30" Height="30" VerticalAlignment="Center" >
+                                <TextBlock Text="{Binding Path=Count_Scale,UpdateSourceTrigger=PropertyChanged}" Foreground="White"  HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                                    
+                            </Border>
+                            
                         </Grid>
                     <Grid Grid.Row="1">
                         <ScrollViewer VerticalScrollBarVisibility="Hidden">

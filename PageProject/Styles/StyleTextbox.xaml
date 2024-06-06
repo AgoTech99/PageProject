@@ -7,6 +7,5 @@
                 <Setter Property="CornerRadius" Value="4" />
             </Style>
         </Style.Resources>
-        <Setter Property="Background" Value="Aqua"/>
     </Style>
 </ResourceDictionary>

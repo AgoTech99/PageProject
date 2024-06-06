@@ -41,7 +41,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Styles\StyleButton.xaml" />
+    <Resource Include="Styles\StyleButton.xaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Styles\StyleTextbox.xaml" />
   </ItemGroup>
 

@@ -48,11 +48,5 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    <Style TargetType="MenuItem" x:Key="MenuItem">
-        <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="Turquoise"/>
-            </Trigger>
-        </Style.Triggers>
-    </Style>
+
 </ResourceDictionary>

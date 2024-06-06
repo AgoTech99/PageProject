@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:PageProject"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
+        Background="#009186"
         >
     <Grid>
         <Grid.RowDefinitions>
@@ -19,14 +20,14 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button Grid.Column="1" Grid.Row="1" Content="Click" Width="100" Height="50"  Click="Button_Click" BorderBrush="Blue"  Background="Aqua">
+        <Button Grid.Column="1" Grid.Row="1" Content="Click" FontSize="22" FontWeight="Bold" Width="100" Height="50"  Click="Button_Click" BorderBrush="Blue"  Background="#0c6861">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="20"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <Button Grid.Column="1" Grid.Row="2" Content="ciao" Width="100" Height="50"  Click="Button_Click_1" BorderBrush="Blue"  Background="Aqua">
+        <Button Grid.Column="1" Grid.Row="2" Content="Constant" FontSize="22" FontWeight="Bold" Width="100" Height="50"  Click="Button_Click_1" BorderBrush="Blue"  Background="#0c6861">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="20"/>
